@@ -10,8 +10,10 @@
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "hbs": "^4.0.6",
     "morgan": "~1.9.0",
-    "mysql2": "^1.6.5",
-    "sequelize": "^5.12.2"
+    "mysql2": "^1.7.0",
+    "sequelize": "^4.44.0",
+    "sequelize-auto-migrations": "^1.0.3"
   }
 }
