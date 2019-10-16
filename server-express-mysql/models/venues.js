@@ -1,21 +1,21 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const bands = sequelize.define('bands', {
-    BandId: {
+  const venues = sequelize.define('venues', {
+    VenueId:{ 
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true
     },
     Name: DataTypes.STRING,
+    Address: DataTypes.STRING,
     ContactPerson: DataTypes.STRING,
-    Genre: DataTypes.STRING,
-    ZipCode: DataTypes.INTEGER
+    PhoneNumber: DataTypes.INTEGER
   }, {});
-  bands.associate = function(models) {
-    models.bands.hasMany(models.bandRatings, { 
-      foreignKey: "BandId" 
+  venues.associate = function(models) {
+    models.venues.hasMany(models.venueRatings,{
+      foreignKey: "VenueId"
     });
   };
-  return bands;
+  return venues;
 };
