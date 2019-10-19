@@ -1,23 +1,32 @@
 import React, {useState, useEffect} from "react";
+
+
 import './Signup.css';
 import { Form, Container, Row, Col, InputGroup,FormControl, Button } from 'react-bootstrap';
 import Header from "../Header/HeaderWithDropdown";
 import Footer from "../Footer/Footer";
 
+const axios = require('axios');
+
+
 
 function signup() {
-    
-    const onSubmit = () => {
+
+    const handleSubmit = e => {
+            
+        e.preventDefault();
 
     }
 
     return(
-        <Form>
+       
+        <div> 
             <Header /> <hr/>
             <Container id='container'>
                 <Row className='w-50 mx-auto mt-5 align-middle' id='row' >
                     <Col className='' >
-                        <Form classname='' id='form'>
+
+                        <Form className='' id='form' onSubmit={handleSubmit}>
                             <h3 className='mt-5 text-white' id='signup-title' >Sign Up</h3> <hr />
 
                             <InputGroup className="mb-3 mt-5">
@@ -69,7 +78,7 @@ function signup() {
                 </Row>
             </Container>
             <Footer />
-        </Form>
+        </div>
     )
 
 }
