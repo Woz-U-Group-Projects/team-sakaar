@@ -71,7 +71,7 @@ function Header() {
         </DropdownButton>
 
         <a
-          href="/sign-up"
+          href="/signup"
           className="btn btn-outline-warning"
           onMouseEnter={AchorEnter}
           onMouseLeave={AnchorLeave}

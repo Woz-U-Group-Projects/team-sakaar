@@ -1,0 +1,17 @@
+#container {
+    background-image: url('https://wallpapershome.com/images/pages/pic_h/2028.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px;
+}
+
+#signup-title {
+    font-weight: bold;
+    font-size: 3em;
+    margin-top:  250px;
+    text-shadow: 1px 1px 3px black;
+}
+
+#form {
+    margin-top: 20%;
+}

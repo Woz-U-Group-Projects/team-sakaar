@@ -45,22 +45,26 @@ function Header() {
           </span>
         </a>
         <span id="login-signup col-xs-12" className="float-right">
+
           <a
-            href="/#"
+            href="/login"
             style={anchorStyles}
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}
           >
             Login
           </a>{" "}
+
           <a
-            href="/#"
+            href="/signup"
             style={anchorStyles}
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}
           >
             Signup
           </a>
+
+          
         </span>
       </header>
     </div>
