@@ -31,6 +31,12 @@ function Signup( props ) {
             uname: ${username}
         `)
     });
+    const [email, setEmail] = useState('');
+    useEffect( () => {
+        console.log(`
+            email: ${email}
+        `)
+    });
     const [password, setPassword] = useState(null);
     useEffect( () => {
         console.log(`
@@ -48,6 +54,7 @@ function Signup( props ) {
         axios.post( url, {
             FirstName: firstname,
             LastName: lastname,
+            Email: email,
             Username: username,
             Password: password
         })
@@ -103,6 +110,25 @@ function Signup( props ) {
                                         required
                                     />
                             </InputGroup>
+
+                            <InputGroup className="mb-3">
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text className='bg-secondary text-warning'   id="basic-addon1">Email</InputGroup.Text>
+                                </InputGroup.Prepend>
+                                    <FormControl
+                                        name='email'
+                                        type='email'
+                                        value={email}
+                                        onChange={ e => {
+                                            setEmail( e.target.value )
+                                        }}  
+                                        placeholder="Email"
+                                        aria-label="email"
+                                        aria-describedby="basic-addon1"
+                                        required
+                                    />
+                            </InputGroup>
+
 
                             <InputGroup className="mb-3">
                                 <InputGroup.Prepend>
