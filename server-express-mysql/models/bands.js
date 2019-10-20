@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     ZipCode: DataTypes.INTEGER
   }, {});
   bands.associate = function(models) {
-    models.bands.hasMany(models.bandRatings, { foreignKey: "BandId" });
+    models.bands.hasMany(models.bands, { foreignKey: "BandsId" });
   };
-  return bands;
+  return venues;
 };
