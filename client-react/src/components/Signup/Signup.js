@@ -61,6 +61,12 @@ function Signup( props ) {
         .then( res =>  console.log( res ) )
         .catch( err => console.log( err ) )
 
+        // Clear input fields
+        setFirstname('');
+        setLastname('');
+        setEmail('');
+        setUsername('');
+        setPassword('');
 
     }
 
@@ -75,7 +81,7 @@ function Signup( props ) {
                         <Form className='' id='form' onSubmit={handleSubmit}>
                             <h3 className='mt-5 text-white' id='signup-title' >Sign Up</h3> <hr />
 
-                            <InputGroup className="mb-3 mt-5">
+                            <InputGroup className="mb-3 mt-5 shadow-lg">
                                 <InputGroup.Prepend>
                                     <InputGroup.Text className='bg-secondary text-warning'   id="basic-addon1">Firstname</InputGroup.Text>
                                 </InputGroup.Prepend>
@@ -93,7 +99,7 @@ function Signup( props ) {
                                     />
                             </InputGroup>
 
-                            <InputGroup className="mb-3">
+                            <InputGroup className="mb-3 shadow-lg">
                                 <InputGroup.Prepend>
                                     <InputGroup.Text className='bg-secondary text-warning' id="basic-addon1">Lastname</InputGroup.Text>
                                 </InputGroup.Prepend>
@@ -111,7 +117,7 @@ function Signup( props ) {
                                     />
                             </InputGroup>
 
-                            <InputGroup className="mb-3">
+                            <InputGroup className="mb-3 shadow-lg">
                                 <InputGroup.Prepend>
                                     <InputGroup.Text className='bg-secondary text-warning'   id="basic-addon1">Email</InputGroup.Text>
                                 </InputGroup.Prepend>
@@ -130,12 +136,11 @@ function Signup( props ) {
                             </InputGroup>
 
 
-                            <InputGroup className="mb-3">
+                            <InputGroup className="mb-3 shadow-lg">
                                 <InputGroup.Prepend>
                                     <InputGroup.Text className='bg-secondary text-warning' id="basic-addon1">Username</InputGroup.Text>
                                 </InputGroup.Prepend>
                                     <FormControl
-
                                         name='username'
                                         type='text'
                                         value={username}
@@ -151,7 +156,6 @@ function Signup( props ) {
                                     <FormControl
                                         name='password'
                                         type='password'
-                                        value='password'
                                         onChange={ e => {
                                             setPassword( e.target.value )
                                         }} 
