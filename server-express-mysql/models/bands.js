@@ -15,5 +15,5 @@ module.exports = (sequelize, DataTypes) => {
   bands.associate = function(models) {
     models.bands.hasMany(models.bands, { foreignKey: "BandsId" });
   };
-  return venues;
+  return bands;
 };
