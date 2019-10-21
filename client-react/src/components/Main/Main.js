@@ -28,6 +28,7 @@ function Main() {
           </p>
           <p>
             <Button
+              href='/signup'
               id="sign-up"
               className="btn-lg active"
               variant="outline-light"

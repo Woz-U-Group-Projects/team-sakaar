@@ -1,0 +1,165 @@
+{
+    "tables": {
+        "bandRatings": {
+            "tableName": "bandRatings",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "BandId": {
+                    "field": "BandId",
+                    "allowNull": true,
+                    "references": {
+                        "model": "bands",
+                        "key": "BandId"
+                    },
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "VenueId": {
+                    "field": "VenueId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Rating": {
+                    "field": "Rating",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Review": {
+                    "field": "Review",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": []
+        },
+        "bands": {
+            "tableName": "bands",
+            "schema": {
+                "BandId": {
+                    "allowNull": false,
+                    "autoIncrement": true,
+                    "primaryKey": true,
+                    "field": "BandId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Name": {
+                    "field": "Name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ContactPerson": {
+                    "field": "ContactPerson",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Genre": {
+                    "field": "Genre",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ZipCode": {
+                    "field": "ZipCode",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "users": {
+            "tableName": "users",
+            "schema": {
+                "UserId": {
+                    "allowNull": false,
+                    "autoIncrement": true,
+                    "primaryKey": true,
+                    "field": "UserId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "FirstName": {
+                    "field": "FirstName",
+                    "seqType": "Sequelize.STRING"
+                },
+                "LastName": {
+                    "field": "LastName",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Username": {
+                    "unique": true,
+                    "field": "Username",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Password": {
+                    "field": "Password",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": []
+        },
+        "venueRatings": {
+            "tableName": "venueRatings",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "BandId": {
+                    "field": "BandId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "VenueId": {
+                    "field": "VenueId",
+                    "allowNull": true,
+                    "references": {
+                        "model": "venues",
+                        "key": "VenueId"
+                    },
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Rating": {
+                    "field": "Rating",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Review": {
+                    "field": "Review",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": []
+        },
+        "venues": {
+            "tableName": "venues",
+            "schema": {
+                "VenueId": {
+                    "allowNull": false,
+                    "autoIncrement": true,
+                    "primaryKey": true,
+                    "field": "VenueId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Name": {
+                    "field": "Name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Address": {
+                    "field": "Address",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ContactPerson": {
+                    "field": "ContactPerson",
+                    "seqType": "Sequelize.STRING"
+                },
+                "PhoneNumber": {
+                    "field": "PhoneNumber",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "revision": 2
+}

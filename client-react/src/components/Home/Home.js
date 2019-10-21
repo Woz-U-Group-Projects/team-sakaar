@@ -3,7 +3,7 @@ import React from "react";
 import "./Home.css";
 
 import Header from "../Header/HeaderWithDropdown";
-import Search from "../Search/Search";
+import Search from "../Main/Search/Search";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 
