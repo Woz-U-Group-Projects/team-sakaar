@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true
     },
+    Email: {
+      type: DataTypes.STRING,
+      unique: true
+    },
     Password: DataTypes.STRING
   }, {});
   users.associate = function(models) {
