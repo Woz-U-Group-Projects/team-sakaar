@@ -6,7 +6,8 @@ import { SearchLocation } from "styled-icons/fa-solid/SearchLocation";
 
 function Search() {
   return (
-    < className="p-3 justify-content-center">
+    <div className="p-3 justify-content-center">
+      <Row>
       <Col sm={8}>
         <p className="float-left">Search For A Band</p>
         <InputGroup className="mb-3">
@@ -24,6 +25,7 @@ function Search() {
         </InputGroup>
       </Col>
     </Row>
+    </div>
   );
 }
 
