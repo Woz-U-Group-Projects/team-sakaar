@@ -1,9 +1,20 @@
-<h1>{{title}}</h1>
-<p>Welcome to the {{title}} list</p>
+var express = require('express');
+var router = express.Router();
 
-<ul>
-    {{#each cats}}
-    <li>{{this.name}}</li>
-    {{/each}}
-</ul>
+router.post('/', function(req, res) {
+res.send('You successfully created a POST route!');
+});
 
+router.get('/', function(req, res) {
+res.send('You successfully created a GET route!');
+});
+
+router.put('/', function(req, res) {
+res.send('You successfully created a PUT route!');
+});
+
+router.delete('/', function(req, res) {
+res.send('You successfully created a DELETE route!');
+});
+
+module.exports = router;
