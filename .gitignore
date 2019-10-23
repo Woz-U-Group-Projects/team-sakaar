@@ -35,8 +35,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-client-react/node_modules
-server-express-mysql/node_modules
+
 
 # Typescript v1 declaration files
 typings/
