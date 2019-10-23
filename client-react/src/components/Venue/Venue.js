@@ -42,6 +42,7 @@ function VenueLogin() {
                     variant="dark"
                     type="submit"
                     className="float-right border border-darl"
+                    href="venue-home"
                   >
                     Login
                   </Button>

@@ -1,33 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import {Row, Col, Nav, Navbar, NavDropdown} from 'react-bootstrap';
-import {useParams } from 'react-router-dom';
+import React from "react";
 
-const DashboardHeader = () => {
-   let { name } = useParams(); 
-   
-   return(
-        <div>
-           <Navbar className='' bg="light" expand="lg" fixed='top'>
-               <Navbar.Brand href={`/profile/${name}`}>Dashboard</Navbar.Brand>
-               <div className='w-100'>
-                  <Navbar.Text  className='' style={{fontSize:'1.5em'}}>Welcome <a href='#'>{name}</a></Navbar.Text>
-               </div>
-               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-               <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
-                  <Nav className="">
-                     <Nav.Link href="#home">Home</Nav.Link>
-                     <Nav.Link href="#logout">Logout</Nav.Link>
-                     <NavDropdown title="Settings" id="basic-nav-dropdown" className=''>
-                        <NavDropdown.Item href="#seting1">Setting1</NavDropdown.Item>
-                        <NavDropdown.Item href="#seting2">Setting2</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#setting3">Setting3</NavDropdown.Item>
-                     </NavDropdown>
-                  </Nav>
-               </Navbar.Collapse>
-         </Navbar> 
-        </div>
-    )
+const anchorStyles = {
+  color: "slategray",
+  fontSize: "1.5em",
+  marginRight: 15,
+  textDecoration: "none"
+};
+
+const titleStyles = {
+  fontSize: "2em"
+};
+
+const secondary = {
+  fontSize: ".5em",
+  marginRight: 3
+};
+
+function AchorEnter(e) {
+  e.target.style.color = "black";
 }
 
-export default DashboardHeader;
+function AnchorLeave(e) {
+  e.target.style.color = "slategray";
+}
+
+function Header() {
+  return (
+    <div>
+      <header className="p-3 pb-5 col-xs-12" style={{ height: "64px" }}>
+        <a id="title-wrapper" href="/#" className="" style={{ color: "black" }}>
+          <span id="title" className="float-left" style={titleStyles}>
+            O
+            <span id="secondary" style={secondary}>
+              N
+            </span>
+            D
+            <span id="secondary" style={secondary}>
+              EMAND
+            </span>
+            B
+            <span id="secondary" style={secondary}>
+              ANDS
+            </span>
+          </span>
+        </a>
+        <span id="login-signup col-xs-12" className="float-right">
+
+          <a
+            href="/signedout"
+            style={anchorStyles}
+            onMouseEnter={AchorEnter}
+            onMouseLeave={AnchorLeave}
+          >
+            Signout
+          </a>{" "}
+
+          
+
+          
+        </span>
+      </header>
+    </div>
+  );
+}
+
+export default Header;
