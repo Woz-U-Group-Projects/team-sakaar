@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+// import React, { useState, useEffect } from 'react';
+// import { useHistory } from 'react-router-dom';
+
+////////I COMMENTED OUT A LOT OF THE CODE. FEEL FREE TO FIX.
 
 
 import './Signup.css';
@@ -12,7 +15,7 @@ const axios = require('axios')
 
 
 function Signup( props ) {
-    let history = useHistory();
+    // let history = useHistory();
 
     const [firstname, setFirstname] = useState('');
 
@@ -24,46 +27,47 @@ function Signup( props ) {
 
     const [password, setPassword] = useState(null);
 
-    const [status, setStatus] = useState('');
+    // const [status, setStatus] = useState('');
    
-    const [statusMessage, setStatusMessage] = useState('');
+    const [ setStatusMessage] = useState('');
+    // const [statusMessage, setStatusMessage] = useState('');
 
     let [accountType, setAccountType] = useState('');
 
-    const [submitted, setSubmission] = useState(false)
-    const [unmounted, setUnmounted] = useState(false)
+    // const [submitted, setSubmission] = useState(false)
+    // const [unmounted, setUnmounted] = useState(false)
 
 
     const handleChange = type => setAccountType(type);
 
-    const clearAllFields = () => {
-        console.log('Clear All Fields')
-        // Clear input fields
-        setFirstname('')
-        setLastname('')
-        setEmail('')
-        setUsername('')
-        setPassword('')
-        setStatusMessage('')
-        setStatus('')
-    };
+    // const clearAllFields = () => {
+    //     console.log('Clear All Fields')
+    //     // Clear input fields
+    //     setFirstname('')
+    //     setLastname('')
+    //     setEmail('')
+    //     setUsername('')
+    //     setPassword('')
+    //     setStatusMessage('')
+    //     setStatus('')
+    // };
 
-    const clearUsernamePassword = () => {
-        console.log('Clear Uname and Password')
-        setUsername('')
-        setPassword('')
-    }
+    // const clearUsernamePassword = () => {
+    //     console.log('Clear Uname and Password')
+    //     setUsername('')
+    //     setPassword('')
+    // }
 
-    const makeTheSwitch = () => {
-        console.log(`
-            Make the switch
-            Account Type: ${accountType}
-        `)
+    // const makeTheSwitch = () => {
+    //     console.log(`
+    //         Make the switch
+    //         Account Type: ${accountType}
+    //     `)
         
-            accountType === 'Client'
-            ? history.push('/client-login')
-            : history.push('/venue-login')
-         }
+    //         accountType === 'Client'
+    //         ? history.push('/client-login')
+    //         : history.push('/venue-login')
+    //      }
 
     const handleSubmit = e => {
         const url = 'http://localhost:3001/signup';
@@ -78,7 +82,7 @@ function Signup( props ) {
         })
         .then( res =>  {
             setStatusMessage( res.data.message );
-            setStatus( res.data.status );
+            // setStatus( res.data.status );
             console.log( res );
         })
         .catch( err => console.log( err ) )
@@ -88,7 +92,7 @@ function Signup( props ) {
        
         <div> 
             <Header /> <hr/>
-            <i>{statusMessage} {status}</i>
+            {/* <i>{statusMessage} {status}</i> */}
             <Container id='container'>
                 <Row className='w-100 mx-auto mt-5' id='row' >
                     <Col className='' sm={6} >
@@ -195,7 +199,7 @@ function Signup( props ) {
                                 <h3 className='mt-3 text-white' style={{textShadow:'1px 1px 3px black',fontSize:'2.5em'}}>Type of Account</h3> <hr className='border-white'/>
                                 <ToggleButtonGroup type="checkbox" value={accountType} onChange={handleChange}>
                                     <ToggleButton value={'Client'}>Client</ToggleButton>
-                                    <ToggleButton value={'Venue'}>Venue</ToggleButton>
+                                    <ToggleButton value={'Venue'}>Musician</ToggleButton>
                                 </ToggleButtonGroup>
                             </div>
                     </Col>
@@ -205,6 +209,12 @@ function Signup( props ) {
         </div>
     )
 
+
+
 }
 
-export default Signup
+
+
+  
+
+export default Signup;

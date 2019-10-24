@@ -7,11 +7,35 @@ import { SearchLocation } from "styled-icons/fa-solid/SearchLocation";
 function Search() {
   return (
     <div className="p-3 justify-content-center">
+        <Row className="float-middle">
+      <Col sm={8}>
+        <p className="float-middle">Search For A Band</p>
+        <InputGroup className="mb-3">
+
+     
+          
+          <FormControl
+
+          className="float-middle"
+            size="lg"
+            placeholder="City, State, Zip"
+            aria-label="Location"
+            aria-describedby="basic-addon1"
+          />
+          <InputGroup.Append className="float-middle">
+            
+          </InputGroup.Append>
+        </InputGroup>
+      </Col>
+    </Row>
 
     <Row>
       <Col sm={8}>
-        <p className="float-left">Search For A Band</p>
+        
         <InputGroup className="mb-3">
+
+     
+          
           <FormControl
             size="lg"
             placeholder="Genre, Bandname"

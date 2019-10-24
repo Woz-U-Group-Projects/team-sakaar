@@ -66,7 +66,7 @@ function Header() {
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}
           >
-            Venue
+            Musician
           </Dropdown.Item>
         </DropdownButton>
 

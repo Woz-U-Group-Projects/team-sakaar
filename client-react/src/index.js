@@ -13,6 +13,7 @@ import ContactUs from "./components/ContactUs/ContactUs";
 import ClientHome from "./components/Client/Clienthome/Clienthome";
 import VenueHome from "./components/Venue/VenueHome/VenueHome";
 import SignedOut from "./components/SignedOut/SignedOut";
+import Signup from "./components/Signup/Signup"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/client-home" component={ClientHome} />
         <Route path="/venue-home" component={VenueHome} />
         <Route path="/signedout" component={SignedOut} />
+        <Route path="/signup"  component={Signup} />
       </Router>
     </div>
   );
