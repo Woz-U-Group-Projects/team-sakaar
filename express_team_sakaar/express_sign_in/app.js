@@ -36,6 +36,9 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+
+  models.sequelize.sync().then(function () {
+    console.log("DB Sync'd up")
 });
 
 module.exports = app;
