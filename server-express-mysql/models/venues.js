@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     State: DataTypes.STRING,
     ZipCode: DataTypes.INTEGER,
     ContactPerson: DataTypes.STRING,
-    Email: DataTypes.STRING
+    Email: DataTypes.STRING,
+    PhoneNumber: DataTypes.string
     
 }, {});
   venues.associate = function(models) {
