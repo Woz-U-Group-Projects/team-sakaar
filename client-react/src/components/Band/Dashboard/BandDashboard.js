@@ -1,28 +1,74 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Figure, InputGroup, FormControl } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Container, Row, Col, Figure  } from 'react-bootstrap';
+import { useHistory, useLocation } from 'react-router-dom';
+import cookies from 'cookiesjs';
 
 import styled from 'styled-components';
 import { EditAlt } from 'styled-icons/boxicons-solid/EditAlt';
 
-import './ClientDashboard.css'
+import './BandDashboard.css'
 
-import DashboardHeader from './DashboardHeader';
+import DashboardHeader from './BandDashboardHeader';
+const axios = require('axios');
 
 
 const ClientDashboard = () => {
-   let { name } = useParams();
+   let location = useLocation();
+   let history = useHistory();
+   let user = '';
 
-   const [profileName, setProfileName] = useState( name );
+   //state
+   const [userName, setProfileName] = useState('');
+
+
+
+   const getCookie = name => {
+
+      if( cookies(name) ){
+      
+         return cookies(name)
+      
+      }else {
+
+         history.push('/')
+      }
+         
+
+   }
+
+   const verifyUser = props => {
+     const jwtToken = getCookie('jwt');
+
+      //verify if user has the cookie
+      const areYouVerified = axios.post('http://localhost:3001/verify', {
+         token: jwtToken
+      });
+
+      areYouVerified.then(user => {
+         // user.data
+
+         if( !user.data.verified ){
+            console.log("NOT VERIFIED")
+            history.push('/')
+         }else{
+            console.log('VERIFIED');
+            user = user.data;
+            setProfileName(user.username)
+         }
+
+      });
+   }
+
+  
    useEffect( () => {
-
+      verifyUser();
    })
 
 
 
    return (
       <div>
-         <DashboardHeader />
+         <DashboardHeader username={userName} />
          <div id='profile-container'>
             <Figure className='float-left ml-5 mt-5'>
                <Figure.Image
@@ -36,7 +82,7 @@ const ClientDashboard = () => {
                      <Container>
                         <Row>
                            <Col sm={10} md={10}>
-                              <h4>{profileName}</h4>
+                              <h4>{userName}</h4>
                            </Col>
                            <Col sm={2} md={2}>
 

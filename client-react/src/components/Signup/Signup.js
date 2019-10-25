@@ -6,6 +6,9 @@ import './Signup.css';
 import { Form, Container, Row, Col, InputGroup,FormControl, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import Header from "../Header/HeaderWithDropdown";
 import Footer from "../Footer/Footer";
+// import ThanksForRegistering from './ThanksForRegistering';
+
+
 
 const axios = require('axios');
 
@@ -14,27 +17,39 @@ const axios = require('axios');
 function Signup( props ) {
     let history = useHistory();
 
+    //State
     const [firstname, setFirstname] = useState('');
-
     const [lastname, setLastname] = useState('');
-
     const [username, setUsername] = useState('');
-
     const [email, setEmail] = useState('');
-
     const [password, setPassword] = useState(null);
+    const [accountType, setAccountType] = useState('Client');
 
-    const [status, setStatus] = useState('');
-   
+    const [status, setStatus] = useState(0);   
     const [statusMessage, setStatusMessage] = useState('');
-
-    let [accountType, setAccountType] = useState('');
-
-    const [submitted, setSubmission] = useState(false)
-    const [unmounted, setUnmounted] = useState(false)
+    const [submitted, setSubmission] = useState(false);
 
 
-    const handleChange = type => setAccountType(type);
+    useEffect( () => {
+
+        console.log(`
+            fname: ${firstname}
+            lname: ${lastname}
+            email: ${email}
+            uname: ${username}
+            status: ${status}
+            status message: ${statusMessage}
+            account type: ${accountType}
+            submitted: ${submitted}
+
+        `)
+
+    })
+
+    const handleChange = type =>  {
+
+        setAccountType( type[1] )
+    }
 
     const clearAllFields = () => {
         console.log('Clear All Fields')
@@ -54,41 +69,64 @@ function Signup( props ) {
         setPassword('')
     }
 
-    const makeTheSwitch = () => {
-        console.log(`
-            Make the switch
-            Account Type: ${accountType}
-        `)
-        
-            accountType === 'Client'
-            ? history.push('/client-login')
-            : history.push('/venue-login')
-         }
+    const navigateToTypeOfAccountCreatedLogin = () => {
+
+        if( accountType === 'Client' ){
+            return '/client-login'
+        } else {
+            return '/venue-login'
+        }
+
+    }
+
 
     const handleSubmit = e => {
         const url = 'http://localhost:3001/signup';
 
         e.preventDefault();
+        
         axios.post( url, {
             FirstName: firstname,
             LastName: lastname,
             Email: email,
             Username: username,
-            Password: password
+            Password: password,
+            AccountType:accountType
         })
         .then( res =>  {
-            setStatusMessage( res.data.message );
-            setStatus( res.data.status );
+            setSubmission(true)
             console.log( res );
+            setStatusMessage( res.data.message );           
+            setStatus( res.data.status );
+            
+            console.log('TYPE_OF_STATUS: ',typeof status)
+
+            if( res.data.status === parseInt( 401 ) ){
+                console.log('401')
+                clearUsernamePassword();            
+            }
+
+            if( res.data.status === parseInt( 201 ) ){
+                console.log('201')
+                clearAllFields();
+                history.push(
+                    '/thanks-for-registering', 
+                    [navigateToTypeOfAccountCreatedLogin()]
+                );
+            }
+           
         })
         .catch( err => console.log( err ) )
+
+
+
     }
 
     return(
        
         <div> 
             <Header /> <hr/>
-            <i>{statusMessage} {status}</i>
+            <div className='bg-info text-white w-75 mx-auto p-3 rounded' style={{position:'relative', marginTop:'0px',display:!status?'none':''  }}> <i>{statusMessage}</i> </div>
             <Container id='container'>
                 <Row className='w-100 mx-auto mt-5' id='row' >
                     <Col className='' sm={6} >
@@ -184,20 +222,23 @@ function Signup( props ) {
 
                             
 
-                            <Button variant='primary' type='submit' size='lg' block>
+                            <Button variant='primary' type='submit' size='lg'  block>
                                 Submit
                             </Button>
 
                         </Form>
                     </Col>
                     <Col sm={6} md={6}>
+
                             <div className='mb-3' id='account-type'>
                                 <h3 className='mt-3 text-white' style={{textShadow:'1px 1px 3px black',fontSize:'2.5em'}}>Type of Account</h3> <hr className='border-white'/>
-                                <ToggleButtonGroup type="checkbox" value={accountType} onChange={handleChange}>
+                                <small className='text-white border border-info bg-info p-2 rounded'>The Account Type will be <strong>Client</strong> by default</small> <br/>
+                                <ToggleButtonGroup className='mt-3' type="checkbox" value={accountType} onChange={handleChange}>
                                     <ToggleButton value={'Client'}>Client</ToggleButton>
                                     <ToggleButton value={'Venue'}>Venue</ToggleButton>
                                 </ToggleButtonGroup>
                             </div>
+                    
                     </Col>
                 </Row>
             </Container>
@@ -207,4 +248,4 @@ function Signup( props ) {
 
 }
 
-export default Signup
+export default Signup;

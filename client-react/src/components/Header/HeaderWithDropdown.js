@@ -53,20 +53,21 @@ function Header() {
           className="float-left mr-2"
         >
           <Dropdown.Item
-            href="/client-login"
+            href="/band-login"
             style={anchorStyles}
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}
           >
-            Client
+            Band Login
           </Dropdown.Item>
+          <Dropdown.Divider />
           <Dropdown.Item
             href="/venue-login"
             style={anchorStyles}
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}
           >
-            Venue
+            Venue Login
           </Dropdown.Item>
         </DropdownButton>
 
