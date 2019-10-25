@@ -188,7 +188,7 @@ function Signup( props ) {
 
                             
 
-                            <Button variant='primary' type='submit' size='lg' block>
+                            <Button href="/signedup" variant='primary' type='submit' size='lg' block>
                                 Submit
                             </Button>
 
