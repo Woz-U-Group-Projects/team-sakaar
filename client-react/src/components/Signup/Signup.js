@@ -72,7 +72,7 @@ function Signup( props ) {
     const navigateToTypeOfAccountCreatedLogin = () => {
 
         if( accountType === 'Client' ){
-            return '/client-login'
+            return '/band-login'
         } else {
             return '/venue-login'
         }
