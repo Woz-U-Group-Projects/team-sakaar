@@ -61,17 +61,6 @@
                 "ZipCode": {
                     "field": "ZipCode",
                     "seqType": "Sequelize.INTEGER"
-                },
-                "BandsId": {
-                    "allowNull": true,
-                    "references": {
-                        "model": "bands",
-                        "key": "BandId"
-                    },
-                    "onDelete": "SET NULL",
-                    "onUpdate": "CASCADE",
-                    "field": "BandsId",
-                    "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
@@ -105,59 +94,7 @@
                 }
             },
             "indexes": []
-        },
-        "venues": {
-            "tableName": "venues",
-            "schema": {
-                "VenueId": {
-                    "allowNull": false,
-                    "autoIncrement": true,
-                    "primaryKey": true,
-                    "field": "VenueId",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "Name": {
-                    "field": "Name",
-                    "seqType": "Sequelize.STRING"
-                },
-                "Address": {
-                    "field": "Address",
-                    "seqType": "Sequelize.STRING"
-                },
-                "City": {
-                    "field": "City",
-                    "seqType": "Sequelize.STRING"
-                },
-                "State": {
-                    "field": "State",
-                    "seqType": "Sequelize.STRING"
-                },
-                "ZipCode": {
-                    "field": "ZipCode",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "ContactPerson": {
-                    "field": "ContactPerson",
-                    "seqType": "Sequelize.STRING"
-                },
-                "Email": {
-                    "field": "Email",
-                    "seqType": "Sequelize.STRING"
-                },
-                "VenuesId": {
-                    "allowNull": true,
-                    "references": {
-                        "model": "venues",
-                        "key": "VenueId"
-                    },
-                    "onDelete": "SET NULL",
-                    "onUpdate": "CASCADE",
-                    "field": "VenuesId",
-                    "seqType": "Sequelize.INTEGER"
-                }
-            },
-            "indexes": []
         }
     },
-    "revision": 2
+    "revision": 1
 }
