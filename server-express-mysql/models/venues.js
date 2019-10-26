@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     ZipCode: DataTypes.INTEGER,
     ContactPerson: DataTypes.STRING,
     Email: DataTypes.STRING,
-    PhoneNumber: DataTypes.string
+    PhoneNumber: DataTypes.STRING
     
 }, {});
   venues.associate = function(models) {
-    models.venues.hasMany(models.venues, { foreignKey: "VenuesId" });
+    models.venues.hasMany(models.venues, { foreignKey: "VenueId" });
   };
   return venues;
 };
