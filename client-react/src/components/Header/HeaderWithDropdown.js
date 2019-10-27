@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap/";
 
+import {useLocation} from 'react-router-dom';
+import './HeaderWithDropdown.css'
 const anchorStyles = {
   color: "slategray",
   fontSize: "1em",
@@ -25,10 +27,16 @@ function AnchorLeave(e) {
   e.target.style.color = "slategray";
 }
 
+
+
 function Header() {
+
+    let location = useLocation();
+
   return (
-    <header className="p-3 pb-5" style={{ height: "64px" }}>
-      <a id="title-wrapper" href="/#" className="" style={{ color: "black" }}>
+    <header  id='header' className="p-3 pb-5" style={{ height: "64px"  }} >
+
+      <a id="title-wrapper" href="/" className="" style={{ color: "black" }}>
         <span id="title" className="float-left" style={titleStyles}>
           O
           <span id="secondary" style={secondary}>
@@ -45,6 +53,7 @@ function Header() {
         </span>
       </a>
 
+      
       <span id="login-signup" className="float-right">
         <DropdownButton
           id="login-dropdown"
@@ -52,21 +61,24 @@ function Header() {
           variant="secondary"
           className="float-left mr-2"
         >
+
           <Dropdown.Item
-            href="/client-login"
+            href="/band-login"
             style={anchorStyles}
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}
           >
-            Client
+            Band Login
           </Dropdown.Item>
+
+          <Dropdown.Divider />
           <Dropdown.Item
             href="/venue-login"
             style={anchorStyles}
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}
           >
-            Musician
+            Musician Login
           </Dropdown.Item>
         </DropdownButton>
 
