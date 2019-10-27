@@ -12,11 +12,11 @@ function Logout() {
     let history = useHistory();
 
     let [count, setCount] = useState(3);
-    let counter = setInterval( countDown, 1000);
+    let counter;
 
     function countDown(){
 
-        if( count == 0){
+        if( count === 0){
             stopCounter();
             history.push('/');
         }else{
@@ -24,12 +24,14 @@ function Logout() {
         }
     }
 
-    function stopCounter(name){
+    counter = setInterval( countDown, 1000);
+
+    function stopCounter(){
         console.log('CLEAR_COUNT: ',counter)
         clearInterval(counter)
     }
 
-    function deleteJWTCookie( name ){
+    function deleteJWTCookie(){
         
         cookies({ jwt: ''}, {
             expires: new Date(0)
@@ -40,8 +42,13 @@ function Logout() {
 
      
     useEffect( () => {
-        deleteJWTCookie('jwt');
-    }) 
+        deleteJWTCookie();
+
+        return () => {
+            stopCounter()
+        }
+        
+    });
         
     
   

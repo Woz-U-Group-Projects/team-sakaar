@@ -6,7 +6,6 @@ import './Signup.css';
 import { Form, Container, Row, Col, InputGroup,FormControl, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import Header from "../Header/HeaderWithDropdown";
 import Footer from "../Footer/Footer";
-// import ThanksForRegistering from './ThanksForRegistering';
 
 
 

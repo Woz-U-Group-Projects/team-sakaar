@@ -18,9 +18,9 @@ const ClientDashboard = () => {
    let user = '';
 
    //state
-   const [userName, setProfileName] = useState('');
-
-
+   const [userName, setProfileName] = useState(null);
+   const [accountType, setAccountType] = useState(null);
+   const [login, setLogin] = useState(false);
 
    const getCookie = name => {
 
@@ -37,34 +37,43 @@ const ClientDashboard = () => {
    }
 
    const verifyUser = props => {
-     const jwtToken = getCookie('jwt');
+     const jwtCookie = getCookie('jwt');
 
       //verify if user has the cookie
       const areYouVerified = axios.post('http://localhost:3001/verify', {
-         token: jwtToken
+         token: jwtCookie
       });
 
       areYouVerified.then(user => {
          // user.data
 
          if( !user.data.verified ){
+
             console.log("NOT VERIFIED")
             history.push('/')
+         
          }else{
+            
             console.log('VERIFIED');
             user = user.data;
-            setProfileName(user.username)
+
+            setAccountType(user.accountType);
+            setProfileName(user.username);
+            setLogin(true)         
          }
 
+          
       });
+
+      
    }
 
   
    useEffect( () => {
       verifyUser();
-   })
-
-
+      UserAccountTypeClient( login );
+   });
+   
 
    return (
       <div>
@@ -102,5 +111,16 @@ const ClientDashboard = () => {
       </div>
          )
      }
+
+   export let UserAccountTypeClient = login => {
+      console.log(`
+         Are we logged in (client) ? ${login}
+      `)
+      return login?'true':'false';
+   }
+
      
 export default ClientDashboard;
+
+
+

@@ -5,10 +5,10 @@ import cookies from 'cookiesjs';
 
 import styled from 'styled-components';
 import { EditAlt } from 'styled-icons/boxicons-solid/EditAlt';
-
+import VenueDashboardHeader from './VenueDashboardHeader';
 import './VenueDashboard.css'
 
-import VenueDashboardHeader from './VenueDashboardHeader';
+
 const axios = require('axios');
 
 
@@ -19,6 +19,7 @@ const VenueDashboard = () => {
 
    //state
    const [userName, setProfileName] = useState('');
+   const [login, setLogin] = useState(false);
 
 
 
@@ -53,7 +54,8 @@ const VenueDashboard = () => {
          }else{
             console.log('VERIFIED');
             user = user.data;
-            setProfileName(user.username)
+            setProfileName(user.username);
+            setLogin(true)
          }
 
       });
@@ -68,7 +70,7 @@ const VenueDashboard = () => {
 
    return (
       <div>
-         <VenueDashboardHeader username={userName} />
+         <VenueDashboardHeader username={userName} loggedin={login} />
          <div id='profile-container'>
             <Figure className='float-left ml-5 mt-5'>
                <Figure.Image
@@ -102,5 +104,8 @@ const VenueDashboard = () => {
       </div>
          )
      }
+
+
+
      
 export default VenueDashboard;

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap/";
+
+import {useLocation} from 'react-router-dom';
 
 const anchorStyles = {
   color: "slategray",
@@ -25,10 +27,15 @@ function AnchorLeave(e) {
   e.target.style.color = "slategray";
 }
 
+
+
 function Header() {
+
+    let location = useLocation();
+
   return (
     <header className="p-3 pb-5" style={{ height: "64px" }}>
-      <a id="title-wrapper" href="/#" className="" style={{ color: "black" }}>
+      <a id="title-wrapper" href="/" className="" style={{ color: "black" }}>
         <span id="title" className="float-left" style={titleStyles}>
           O
           <span id="secondary" style={secondary}>
@@ -45,6 +52,7 @@ function Header() {
         </span>
       </a>
 
+      
       <span id="login-signup" className="float-right">
         <DropdownButton
           id="login-dropdown"
@@ -52,6 +60,7 @@ function Header() {
           variant="secondary"
           className="float-left mr-2"
         >
+
           <Dropdown.Item
             href="/band-login"
             style={anchorStyles}
@@ -60,6 +69,7 @@ function Header() {
           >
             Band Login
           </Dropdown.Item>
+
           <Dropdown.Divider />
           <Dropdown.Item
             href="/venue-login"

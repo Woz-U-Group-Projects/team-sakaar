@@ -130,6 +130,7 @@ try{
           lastname: user.LastName,
           email:user.Email,
           username: user.Username,
+          accountType: user.AccountType,
           status: parseInt(200),
           message: 'Login Successful'
         });

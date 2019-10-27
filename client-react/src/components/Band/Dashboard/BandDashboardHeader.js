@@ -23,7 +23,6 @@ const BandDashboardHeader = ({ username }) => {
                <Navbar.Toggle aria-controls="basic-navbar-nav" />
                <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
                   <Nav className="">
-                     <Nav.Link href="/">Home</Nav.Link>
                      <Nav.Link href="/logout">Logout</Nav.Link>
                      <NavDropdown title="Settings" id="basic-nav-dropdown" className=''>
                         <NavDropdown.Item href="#seting1">Setting1</NavDropdown.Item>
