@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-// import React, { useState, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
+
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 ////////I COMMENTED OUT A LOT OF THE CODE. FEEL FREE TO FIX.
 
@@ -10,18 +10,14 @@ import { Form, Container, Row, Col, InputGroup,FormControl, Button, ToggleButton
 import Header from "../Header/HeaderWithDropdown";
 import Footer from "../Footer/Footer";
 
-<<<<<<< HEAD
-const axios = require('axios')
-=======
 
 
 const axios = require('axios');
->>>>>>> Nate-Frontend
 
 
 
 function Signup( props ) {
-    // let history = useHistory();
+    let history = useHistory();
 
     //State
     const [firstname, setFirstname] = useState('');
@@ -31,24 +27,12 @@ function Signup( props ) {
     const [password, setPassword] = useState(null);
     const [accountType, setAccountType] = useState('Client');
 
-<<<<<<< HEAD
-    // const [status, setStatus] = useState('');
-   
-    const [ setStatusMessage] = useState('');
-    // const [statusMessage, setStatusMessage] = useState('');
-=======
     const [status, setStatus] = useState(0);   
     const [statusMessage, setStatusMessage] = useState('');
     const [submitted, setSubmission] = useState(false);
->>>>>>> Nate-Frontend
 
 
-<<<<<<< HEAD
-    // const [submitted, setSubmission] = useState(false)
-    // const [unmounted, setUnmounted] = useState(false)
-=======
     useEffect( () => {
->>>>>>> Nate-Frontend
 
         console.log(`
             fname: ${firstname}
@@ -69,36 +53,6 @@ function Signup( props ) {
         setAccountType( type[1] )
     }
 
-<<<<<<< HEAD
-    // const clearAllFields = () => {
-    //     console.log('Clear All Fields')
-    //     // Clear input fields
-    //     setFirstname('')
-    //     setLastname('')
-    //     setEmail('')
-    //     setUsername('')
-    //     setPassword('')
-    //     setStatusMessage('')
-    //     setStatus('')
-    // };
-
-    // const clearUsernamePassword = () => {
-    //     console.log('Clear Uname and Password')
-    //     setUsername('')
-    //     setPassword('')
-    // }
-
-    // const makeTheSwitch = () => {
-    //     console.log(`
-    //         Make the switch
-    //         Account Type: ${accountType}
-    //     `)
-        
-    //         accountType === 'Client'
-    //         ? history.push('/client-login')
-    //         : history.push('/venue-login')
-    //      }
-=======
     const clearAllFields = () => {
         console.log('Clear All Fields')
         // Clear input fields
@@ -127,7 +81,6 @@ function Signup( props ) {
 
     }
 
->>>>>>> Nate-Frontend
 
     const handleSubmit = e => {
         const url = 'http://localhost:3001/signup';
@@ -143,12 +96,7 @@ function Signup( props ) {
             AccountType:accountType
         })
         .then( res =>  {
-<<<<<<< HEAD
-            setStatusMessage( res.data.message );
-            // setStatus( res.data.status );
-=======
             setSubmission(true)
->>>>>>> Nate-Frontend
             console.log( res );
             setStatusMessage( res.data.message );           
             setStatus( res.data.status );
@@ -180,11 +128,7 @@ function Signup( props ) {
        
         <div> 
             <Header /> <hr/>
-<<<<<<< HEAD
-            {/* <i>{statusMessage} {status}</i> */}
-=======
             <div className='bg-info text-white w-75 mx-auto p-3 rounded' style={{position:'relative', marginTop:'0px',display:!status?'none':''  }}> <i>{statusMessage}</i> </div>
->>>>>>> Nate-Frontend
             <Container id='container'>
                 <Row className='w-100 mx-auto mt-5' id='row' >
                     <Col className='' sm={6} >
@@ -280,11 +224,7 @@ function Signup( props ) {
 
                             
 
-<<<<<<< HEAD
-                            <Button href="/signedup" variant='primary' type='submit' size='lg' block>
-=======
                             <Button variant='primary' type='submit' size='lg'  block>
->>>>>>> Nate-Frontend
                                 Submit
                             </Button>
 
@@ -312,11 +252,4 @@ function Signup( props ) {
 
 }
 
-<<<<<<< HEAD
-
-
-  
-
-=======
->>>>>>> Nate-Frontend
 export default Signup;

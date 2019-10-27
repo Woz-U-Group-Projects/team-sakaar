@@ -77,11 +77,7 @@ function Header() {
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}
           >
-<<<<<<< HEAD
             Musician
-=======
-            Venue Login
->>>>>>> Nate-Frontend
           </Dropdown.Item>
         </DropdownButton>
 

@@ -15,7 +15,7 @@ function Home() {
       <Header />
       <hr />
       <Container>
-        <Search /> <hr />
+        <Search  /> <hr />
         <Main /> <hr />
       </Container>
       <Footer />
