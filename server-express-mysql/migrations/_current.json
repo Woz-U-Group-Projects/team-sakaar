@@ -88,8 +88,18 @@
                     "field": "Username",
                     "seqType": "Sequelize.STRING"
                 },
+                "Email": {
+                    "unique": true,
+                    "field": "Email",
+                    "seqType": "Sequelize.STRING"
+                },
                 "Password": {
                     "field": "Password",
+                    "seqType": "Sequelize.STRING"
+                },
+                "AccountType": {
+                    "allowNull": false,
+                    "field": "AccountType",
                     "seqType": "Sequelize.STRING"
                 }
             },
@@ -161,5 +171,5 @@
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 3
 }

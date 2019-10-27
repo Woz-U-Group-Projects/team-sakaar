@@ -1,0 +1,8 @@
+#client-pic-container {
+  height: 500px;
+  width: 100%;
+  background-image: url("http://darkroom-cdn.s3.amazonaws.com/2017/04/AFP-Getty_2017-Coachella-Valley-Music-And-Arts-Festival-We-26.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left 70%;
+}
