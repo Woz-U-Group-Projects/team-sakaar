@@ -38,7 +38,7 @@ function VenueHeader() {
         </a>
 
         <span id="title" style={venueStyles} className="">
-          V<span style={vernuSecondary}>ENUE</span>
+          M<span style={vernuSecondary}>USICIAN</span>
         </span>
       </header>
       <hr />

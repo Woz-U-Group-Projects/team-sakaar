@@ -40,7 +40,8 @@ function BandHeader() {
         </a>
 
         <span id="title" style={clientStyles} className="">
-          C<span style={clientSecondary}>LIENT</span>
+          B<span style={clientSecondary}>AND</span> 
+          L<span style={clientSecondary}>OGIN</span>
         </span>
       </header>
       <hr />

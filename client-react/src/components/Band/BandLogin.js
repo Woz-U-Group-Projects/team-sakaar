@@ -24,6 +24,7 @@ function BandLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [submit, setSubmit] = useState(false);
+  const [error, setError] = useState('');
   const [status, setStatus] = useState('');
   const [statusMessage, setStatusMessage] = useState('');
 
@@ -47,6 +48,7 @@ function BandLogin() {
         // console.log(res.data)
         if( res.data.status === parseInt( 401 ) ){
               setStatus( res.data.status )
+              setError( res.data.message )
               console.log( res.data.status)
         }
   
@@ -70,14 +72,16 @@ function BandLogin() {
       <BandHeader />
       <Container>
         <Row>
-          <Col id="client-pic-container" className="shadow-lg" />
+          <Col md={12} id="client-pic-container" className="shadow-lg"  style={{height:'50vh'}} />
         </Row>
+        
 
         <Row>
-          <Col className="mt-5 p-5" md={12}>
+        <Col className="mt-5 p-5 mx-auto" md={12} style={{position:'relative',top:'-30px'}}>
 
-          <div className='text-white my-3 rounded'> <i>Error 401 </i> </div>
-            <Form id='form' onSubmit={handleSubmit} className="w-75 m-auto">
+          <div className='text-white my-3 mx-auto rounded bg-danger w-50' style={{display:error?'':'none'}}> <i>{error}</i> </div>
+
+            <Form id='form' onSubmit={handleSubmit} className="w-75 m-auto" >
               <InputGroup className="mb-3 shadow">
                 <FormControl
                   type='text'

@@ -138,14 +138,15 @@ try{
 
       } else {
         console.log('Wrong password');
-        res.sendStatus(401).json({
+        res.json({
            message: 'Wrong password',
            status: parseInt(401)
         })
       }
     }
     
-    });//then
+    }) //then
+    .catch( error => console.log('An Error Occured: ',error))
 
   } catch (err ) {
     console.log('Server might be down. ', err)
@@ -235,7 +236,7 @@ try{
 
       } else {
         console.log('Wrong password');
-        res.sendStatus(401).json({
+        res.json({
            message: 'Wrong password',
            status: parseInt(401)
         })
