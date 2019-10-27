@@ -71,7 +71,6 @@ const ClientDashboard = () => {
   
    useEffect( () => {
       verifyUser();
-      UserAccountTypeClient( login );
    });
    
 
@@ -111,14 +110,6 @@ const ClientDashboard = () => {
       </div>
          )
      }
-
-   export let UserAccountTypeClient = login => {
-      console.log(`
-         Are we logged in (client) ? ${login}
-      `)
-      return login?'true':'false';
-   }
-
      
 export default ClientDashboard;
 
