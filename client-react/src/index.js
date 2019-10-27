@@ -8,7 +8,9 @@ import Home from "./components/Home/Home";
 import BandLogin from "./components/Band/BandLogin";
 import VenueLogin from "./components/Venue/VenueLogin";
 import AboutUs from "./components/AboutUs/AboutUs";
+
 import ContactUs from "./components/ContactUs/ContactUs";
+import ContactUsV2 from './components/ContactUs/ContactUsv2';
 import Signup from "./components/Signup/Signup";
 import BandDashboard from "./components/Band/Dashboard/BandDashboard";
 import ThanksForRegistering from "./components/Signup/ThanksForRegistering";
@@ -24,6 +26,7 @@ function App() {
         <Route path="/venue-login" component={VenueLogin} />
         <Route path="/about-us" component={AboutUs} />
         <Route path="/contact-us" component={ContactUs} />
+        <Route path="/contact-us-v2" component={ContactUsV2} />
         <Route path="/signup" component={Signup} />
         <Route path='/thanks-for-registering' component={ThanksForRegistering} />
         <Route path='/band-dashboard' component={BandDashboard} />

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap/";
 
 import {useLocation} from 'react-router-dom';
-
+import './HeaderWithDropdown.css'
 const anchorStyles = {
   color: "slategray",
   fontSize: "1em",
@@ -34,7 +34,8 @@ function Header() {
     let location = useLocation();
 
   return (
-    <header className="p-3 pb-5" style={{ height: "64px" }}>
+    <header  id='header' className="p-3 pb-5" style={{ height: "64px"  }} >
+
       <a id="title-wrapper" href="/" className="" style={{ color: "black" }}>
         <span id="title" className="float-left" style={titleStyles}>
           O
