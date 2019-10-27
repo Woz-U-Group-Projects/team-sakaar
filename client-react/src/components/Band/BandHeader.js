@@ -18,7 +18,7 @@ const clientSecondary = {
   marginRight: 3
 };
 
-function ClientHeader() {
+function BandHeader() {
   return (
     <div>
       <header className="p-3 pb-5" style={{ height: "64px" }}>
@@ -48,4 +48,4 @@ function ClientHeader() {
   );
 }
 
-export default ClientHeader;
+export default BandHeader;
