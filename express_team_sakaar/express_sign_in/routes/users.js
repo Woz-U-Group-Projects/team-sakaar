@@ -1,11 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var models = require('../models'); //<--- Add this line
-
+var models = require('../models');
+var passport = require('../services/passport'); // <--- Add this code
+var express = require('express');
+var router = express.Router();
+const mysql = require('mysql2');
+var models = require('../models');
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
+
 router.get('/signup', function (req, res, next) {
   res.render('signup');
 });
@@ -25,15 +30,28 @@ router.post('/signup', function (req, res, next) {
     })
     .spread(function (result, created) {
       if (created) {
-        res.send('User successfully created');
+        res.redirect('login'); //<---Change this line to redirect to the login screen
       } else {
         res.send('This user already exists');
       }
     });
 });
 
-router.get('/login', function (req, res, next) {
-  res.render('login');
+router.get('/profile/:id', function (req, res, next) {
+  models.users
+    .findByPk(parseInt(req.params.id))
+    .then(user => {
+      if (user) {
+        res.render('profile', {
+          FirstName: user.FirstName,
+          LastName: user.LastName,
+          Email: user.Email,
+          Username: user.Username
+        });
+      } else {
+        res.send('User not found');
+      }
+    });
 });
 
 router.post('/login', function (req, res, next) {
@@ -46,7 +64,7 @@ router.post('/login', function (req, res, next) {
     })
     .then(user => {
       if (user) {
-        res.send('Login succeeded!');
+        res.redirect('profile/' + user.UserId); //<---Change this line to redirect to the profile
       } else {
         res.send('Invalid login!');
       }

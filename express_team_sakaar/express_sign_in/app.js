@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var models = require('./models');
+var passport = require('passport'); // <--- Add this code to your declarations
+var session = require('express-session'); // <--- Add this code to your declarations
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -39,6 +42,24 @@ app.use(function(err, req, res, next) {
 
   models.sequelize.sync().then(function () {
     console.log("DB Sync'd up")
+    app.use(session({
+      secret: 'perilous journey'
+    }));
+    app.use(passport.initialize());
+    app.use(passport.session());
 });
+
+  // ...
+  app.use(cookieParser());
+  app.use(express.static(path.join(__dirname, 'public')));
+
+  // Add these three lines of code
+  app.use(session({ secret: 'perilous journey' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  app.use('/', indexRouter);
+  app.use('/users', usersRouter);
+// ...
 
 module.exports = app;
