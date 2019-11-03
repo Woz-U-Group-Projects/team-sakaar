@@ -1,16 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const bandRatings = sequelize.define('bandRatings', {
+  const bandRating = sequelize.define('bandRating', {
     BandId: DataTypes.INTEGER,
     VenueId: DataTypes.INTEGER,
     Rating: DataTypes.INTEGER,
     Review: DataTypes.STRING
   }, {});
-  bandRatings.associate = function(models) {
-    models.bandRatings.belongsTo(models.bands, {
+  bandRating.associate = function(models) {
+    models.bandRating.belongsTo(models.band, {
       foreignKey: "BandId",
       targetKey: "BandId"
     });
   };
-  return bandRatings;
+  return bandRating;
 };

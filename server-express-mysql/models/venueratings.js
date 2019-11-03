@@ -1,18 +1,18 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const venueRatings = sequelize.define('venueRatings', {
+  const venueRating = sequelize.define('venueRating', {
     VenueId: DataTypes.INTEGER,
     FoodServiceRating: DataTypes.INTEGER,
     BarServiceRating: DataTypes.INTEGER,
     MusicVenueRating: DataTypes.INTEGER,
     Comment: DataTypes.STRING
   }, {});
-    venueRatings.associate = function(models) {
-    models.venueRatings.belongsTo(models.venues, {
+    venueRating.associate = function(models) {
+    models.venueRating.belongsTo(models.venue, {
       foreignKey: "VenueId",
       targetKey: "VenueId"
     });
   };
-  return venueRatings;
+  return venueRating;
 };
 

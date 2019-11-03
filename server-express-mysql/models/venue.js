@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const venues = sequelize.define('venues', {
+  const venue = sequelize.define('venue', {
     VenueId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     PhoneNumber: DataTypes.STRING
     
 }, {});
-  venues.associate = function(models) {
-    models.venues.hasMany(models.venues, { foreignKey: "VenueId" });
+  venue.associate = function(models) {
+    models.venue.hasMany(models.venue, { foreignKey: "VenueId" });
   };
-  return venues;
+  return venue;
 };
