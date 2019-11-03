@@ -37,24 +37,34 @@ router.post('/signup', function (req, res, next) {
     });
 });
 
-router.get('/profile/:id', function (req, res, next) {
-  models.users
-    .findByPk(parseInt(req.params.id))
-    .then(user => {
-      if (user) {
-        res.render('profile', {
-          FirstName: user.FirstName,
-          LastName: user.LastName,
-          Email: user.Email,
-          Username: user.Username
-        });
-      } else {
-        res.send('User not found');
-      }
-    });
+router.get('/profile', function (req, res, next) {
+  if (req.user) {
+    models.users
+      .findByPk(parseInt(req.user.UserId))
+      .then(user => {
+        if (user) {
+          res.render('profile', {
+            FirstName: user.FirstName,
+            LastName: user.LastName,
+            Email: user.Email,
+            Username: user.Username
+          });
+        } else {
+          res.send('User not found');
+        }
+      });
+  } else {
+    res.redirect('/users/login');
+  }
+});
 });
 
-router.post('/login', function (req, res, next) {
+router.post('/login', passport.authenticate('local', {
+    failureRedirect: '/users/login'
+  }),
+  function (req, res, next) {
+    res.redirect('profile')
+  }); //<--- Called Without UserID {
   models.users
     .findOne({
       where: {

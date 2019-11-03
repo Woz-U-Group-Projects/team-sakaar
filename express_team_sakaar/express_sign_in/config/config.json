@@ -5,9 +5,13 @@
     "database": "auth",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "define": {
-      "timestamps": false
-    }
+ {
+  "development": {
+    "username": "root",
+    "password": "Password1!",
+    "database": "auth2",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
@@ -22,5 +26,3 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
-  }
-}
