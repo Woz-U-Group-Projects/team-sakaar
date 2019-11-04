@@ -8,7 +8,7 @@ import { EditAlt } from 'styled-icons/boxicons-solid/EditAlt';
 
 import './BandDashboard.css'
 
-import DashboardHeader from './BandDashboardHeader';
+import DashboardHeader from './BandDashboardHeader'
 const axios = require('axios');
 
 

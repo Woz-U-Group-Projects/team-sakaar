@@ -1,4 +1,6 @@
-/* #container {
+
+ #container {
+
     background-image: url('https://wallpapershome.com/images/pages/pic_h/2028.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -13,7 +15,7 @@
     margin-top:  80px;
     height: 400px;
     margin-left: 180px;
-    text-shadow: 1px 1px 3px white;
+    ;
 }
 
 #form {
@@ -24,6 +26,7 @@
 
 #account-type {
     margin-top: 17%;
+
 } */
 
 
@@ -48,3 +51,5 @@
 #account-type {
     margin-top: 17%;
 }
+
+

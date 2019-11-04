@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Mysql00##",
+    "password": "Password1!",
     "database": "SakaarDB",
     "host": "127.0.0.1",
     "dialect": "mysql",
