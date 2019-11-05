@@ -46,8 +46,8 @@ router.get('', function(req, res, next) {
   router.post('', function (req, res, next) {
     model.band.findOrCreate({
       where: { 
-        first_name: req.body.first_name, 
-        last_name: req.body.last_name 
+        name: req.body.name, 
+        genre: req.body.genre 
       }
     })
     .spread(function(result, created) {
