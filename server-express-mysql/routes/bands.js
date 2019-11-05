@@ -52,7 +52,7 @@ router.get('', function(req, res, next) {
     })
     .spread(function(result, created) {
       if (created) {
-        res.redirect('/actors/' + result.band_id);
+        res.redirect('/bands/' + result.band_id);
       } else {
         res.status(400);
         res.send('Band already exists');
