@@ -72,7 +72,7 @@ router.get('', function(req, res, next) {
   });
   
   router.delete("/bands/:id", function (req, res, next) {
-    let actorId = parseInt(req.params.id);
+    let bandId = parseInt(req.params.id);
     models.band
       .destroy({
         where: { band_id: bandId }
