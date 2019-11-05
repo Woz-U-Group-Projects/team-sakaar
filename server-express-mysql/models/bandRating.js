@@ -9,7 +9,13 @@ module.exports = (sequelize, DataTypes) => {
   bandRating.associate = function(models) {
     models.bandRating.belongsTo(models.band, {
       foreignKey: "BandId",
-      targetKey: "BandId"
+      _targetKey: "BandId",
+      get targetKey() {
+        return this._targetKey;
+      },
+      set targetKey(value) {
+        this._targetKey = value;
+      },
     });
   };
   return bandRating;
