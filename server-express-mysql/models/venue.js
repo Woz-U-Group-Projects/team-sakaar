@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     ZipCode: DataTypes.INTEGER,
     ContactPerson: DataTypes.STRING,
     Email: DataTypes.STRING,
-    PhoneNumber: DataTypes.STRING
+    PhoneNumber: DataTypes.INTEGER
+
     
 }, {});
   venue.associate = function(models) {
