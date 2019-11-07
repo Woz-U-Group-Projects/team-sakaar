@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const bandRating = sequelize.define('bandRating', {
     BandId: DataTypes.INTEGER,
     VenueId: DataTypes.INTEGER,
+    Genre: DataTypes.STRING,
     Rating: DataTypes.INTEGER,
     Review: DataTypes.STRING
   }, {});
