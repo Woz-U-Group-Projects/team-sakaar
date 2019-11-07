@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const models = require('../models');
 const authService = require('../services/auth');
 const Sequalize = require('sequelize')
