@@ -12,7 +12,7 @@ router.get('', function(req, res, next) {
         attributes: ['user_id', 'first_name', 'last_name', 'user_name', 'password' ],
         include: [{ 
           model: models.bandRating, 
-          attributes: ['band_id', 'venue_id', 'rating', 'review'] 
+          attributes: ['band_id', 'venue_id', 'genre', 'rating', 'review'] 
         }]      
       })
       .then(usersFound => {
