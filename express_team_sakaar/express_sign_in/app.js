@@ -64,4 +64,21 @@ app.use(function(err, req, res, next) {
   app.use('/users', usersRouter);
 // ...
 
-module.exports = app;
+  var createError = require('http-errors');
+  var express = require('express');
+  var path = require('path');
+  var cookieParser = require('cookie-parser');
+  var logger = require('morgan');
+  var models = require('./models'); //<--- Add this line
+
+  var indexRouter = require('./routes/index');
+  var usersRouter = require('./routes/users');
+
+  // ...
+
+  // Add this code above the module.exports
+  models.sequelize.sync().then(function () {
+    console.log("DB Sync'd up")
+  });
+
+  module.exports = app;
