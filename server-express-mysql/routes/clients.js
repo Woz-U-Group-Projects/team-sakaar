@@ -2,7 +2,7 @@
 router.get('', function(req, res, next) {
     models.client
       .findAll({ 
-        attributes: ['client_id', 'first_name', 'last_name', 'company_name', 'event_date', 'event_zip_code',  'genre' ],
+        attributes: ['client_id', 'first_name', 'last_name', 'company_name', 'event_date', 'event_zip_code',  'genre', 'history' ],
         include: [{ 
           model: models.band, 
           attributes: ['band_id', 'name', 'contact_person', 'e_mail', 'genre', 'zip_code' ] 
