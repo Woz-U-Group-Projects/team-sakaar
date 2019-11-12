@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     EventName: DataTypes.STRING,
     EventDate: DataTypes.DATE, 
     EventZipCode: DataTypes.INTEGER,
-    Genre: DataTypes.STRING
+    Genre: DataTypes.STRING,
+    History: DataTypes.STRING
     
   }, {});
   client.associate = function(models) {
