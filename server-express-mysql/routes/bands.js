@@ -6,7 +6,7 @@ var models = require('../models');
 router.get('', function(req, res, next) {
     models.band
       .findAll({ 
-        attributes: ['band_id', 'name', 'genre', 'zip_code' ],
+        attributes: ['band_id', 'name', 'genre', 'contact_person', 'e_mail',  'zip_code' ],
         include: [{ 
           model: models.bandRating, 
           attributes: ['band_id', 'venue_id', 'rating', 'review'] 
