@@ -9,7 +9,7 @@ import './BandDashboard.css';
 class App extends React.Component {
   render () {
     return (
-     <div className='newsfeed'><StreamApp
+     <div className='col-sm'><StreamApp
       
         apiKey="du8he7epvp94"
         appId="45206"

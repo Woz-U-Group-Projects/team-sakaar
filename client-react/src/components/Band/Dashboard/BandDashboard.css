@@ -11,9 +11,21 @@
 
 }
 
-#newsfeed {
+.col-sm {
 
-    width: 300px;
-    height: 100px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
     border: 1px solid blue; 
+
+
+}
+.center {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
 }
