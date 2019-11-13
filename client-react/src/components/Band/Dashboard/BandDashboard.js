@@ -81,8 +81,8 @@ const ClientDashboard = () => {
 
    return (
       <div>
-         <DashboardHeader username={userName} className='navbar navbar-inverse'/>
-         <div id='profile-container' >
+         <DashboardHeader username={userName} />
+         <div id='profile-container'>
             <Figure className='float-left ml-5 mt-5' className='center'>
                <Figure.Image
                   width={400}
