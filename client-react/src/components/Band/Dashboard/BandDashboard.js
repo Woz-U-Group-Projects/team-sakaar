@@ -6,7 +6,8 @@ import cookies from 'cookiesjs';
 import styled from 'styled-components';
 import { EditAlt } from 'styled-icons/boxicons-solid/EditAlt';
 
-import './BandDashboard.css'
+import './BandDashboard.css';
+
 
 import Newsfeed from './Newsfeed';
 
@@ -80,9 +81,9 @@ const ClientDashboard = () => {
 
    return (
       <div>
-         <DashboardHeader username={userName} />
-         <div id='profile-container'>
-            <Figure className='float-left ml-5 mt-5'>
+         <DashboardHeader username={userName} className='navbar navbar-inverse'/>
+         <div id='profile-container' >
+            <Figure className='float-left ml-5 mt-5' className='center'>
                <Figure.Image
                   width={400}
                   height={300}

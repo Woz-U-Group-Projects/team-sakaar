@@ -16,7 +16,7 @@ import BandDashboard from "./components/Band/Dashboard/BandDashboard";
 import ThanksForRegistering from "./components/Signup/ThanksForRegistering";
 import Logout from "./components/Logout/Logout";
 import VenueDashboard from "./components/Venue/Dashboard/VenueDashboard";
-import ClientHome from "./components/ClientHome/ClientHome"
+
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
         <Route path='/band-dashboard' component={BandDashboard} />
         <Route path='/venue-dashboard' component={VenueDashboard} />
         <Route path='/logout' component={Logout} />
-         <Route path='/ClientHome' component={ClientHome} /> 
+         
       </Router>
 
      

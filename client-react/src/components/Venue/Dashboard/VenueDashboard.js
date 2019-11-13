@@ -6,7 +6,11 @@ import cookies from 'cookiesjs';
 import styled from 'styled-components';
 import { EditAlt } from 'styled-icons/boxicons-solid/EditAlt';
 import VenueDashboardHeader from './VenueDashboardHeader';
-import './VenueDashboard.css'
+import './VenueDashboard.css';
+
+import Newsfeed from '../../Band/Dashboard/Newsfeed'
+
+
 
 
 const axios = require('axios');
@@ -70,38 +74,45 @@ const VenueDashboard = () => {
 
    return (
       <div>
-         <VenueDashboardHeader username={userName} loggedin={login} />
-         <div id='profile-container'>
-            <Figure className='float-left ml-5 mt-5'>
-               <Figure.Image
-                  width={400}
-                  height={300}
-                  alt="171x180"
-                  src="https://www.nationalgeographic.com/content/dam/news/photos/000/795/79574.jpg"
-                  thumbnail
-               />
-               <Figure.Caption id='profile-picture' className='w-100 mt-3'>
-                     <Container>
-                        <Row>
-                           <Col sm={10} md={10}>
-                              <h4>{userName}</h4>
-                           </Col>
-                           <Col sm={2} md={2}>
+      <VenueDashboardHeader username={userName} />
+      <div id='profile-container'>
+         <Figure className='float-left ml-5 mt-5' className='center'>
+            <Figure.Image
+               width={400}
+               height={300}
+               alt="171x180"
+               src="https://www.nationalgeographic.com/content/dam/news/photos/000/795/79574.jpg"
+               thumbnail
+            />
+            <Figure.Caption id='profile-picture' className='w-100 mt-3'>
+                  <Container>
+                     <Row>
+                        <Col sm={10} md={10}>
+                           <h4>{userName}</h4>
+                        </Col>
+                        <Col sm={2} md={2}>
 
-                              <span id='profile-edit' className=''>
-                                 <EditAlt id='icon' size='18' title='edit name' />
-                              </span>
+                           <span id='profile-edit' className=''>
+                              <EditAlt id='icon' size='18' title='edit name' />
+                           </span>
 
-                           </Col>
-                        </Row>
-                     </Container>
-               </Figure.Caption>
-            </Figure>
-         </div>
-
-         <section id='news-feed'>
-         </section>
+                        </Col>
+                     </Row>
+                  </Container>
+            </Figure.Caption>
+         </Figure>
+         
       </div>
+      
+
+      <section id='news-feed'>
+      </section>
+
+      <Newsfeed></Newsfeed>
+
+     
+   </div>
+
          )
      }
 
