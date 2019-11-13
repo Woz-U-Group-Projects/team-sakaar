@@ -8,8 +8,12 @@ import { EditAlt } from 'styled-icons/boxicons-solid/EditAlt';
 
 import './BandDashboard.css'
 
+import Newsfeed from './Newsfeed';
+
 import DashboardHeader from './BandDashboardHeader'
 const axios = require('axios');
+
+
 
 
 const ClientDashboard = () => {
@@ -103,11 +107,17 @@ const ClientDashboard = () => {
                      </Container>
                </Figure.Caption>
             </Figure>
+            
          </div>
+         
 
          <section id='news-feed'>
          </section>
+
+         <Newsfeed></Newsfeed>
       </div>
+
+     
          )
      }
      

@@ -12,6 +12,9 @@ import { Container } from "react-bootstrap";
 function ClientHome() {
   return (
     <div>
+
+<div>testing</div>
+
       <Header />
       <hr />
       <Container>
@@ -19,7 +22,9 @@ function ClientHome() {
         <Main /> <hr />
       </Container>
       <Footer />
+      
     </div>
+    
   );
 }
 

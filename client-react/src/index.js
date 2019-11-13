@@ -21,6 +21,8 @@ import ClientHome from "./components/ClientHome/ClientHome"
 function App() {
   return (
     <div className="App">
+
+      
       <Router>
         <Route exact path="/" component={Home} />
         <Route path="/band-login" component={BandLogin} />
@@ -35,6 +37,8 @@ function App() {
         <Route path='/logout' component={Logout} />
          <Route path='/ClientHome' component={ClientHome} /> 
       </Router>
+
+     
     </div>
   );
 }

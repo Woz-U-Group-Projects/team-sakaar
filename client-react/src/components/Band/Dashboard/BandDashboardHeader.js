@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import {} from 'react-router-dom';
 
+import Newsfeed from './Newsfeed';
+
 const BandDashboardHeader = ({ username }) => {
 
    const [settings, setSetting] = useState({
@@ -16,7 +18,10 @@ const BandDashboardHeader = ({ username }) => {
    return(
         <div>
            <Navbar className='' bg="light" expand="lg" fixed='top'>
-               <Navbar.Brand href={`/band-dashboard`}>Band Dashboard</Navbar.Brand>
+               <Navbar.Brand href={`/band-dashboard`}>Musician Dashboard</Navbar.Brand>
+
+
+               
                <div className='w-100'>
                   <Navbar.Text  className='' style={{fontSize:'1.5em'}}>Welcome <a href='/band-dashboard'>{username}</a></Navbar.Text>
                </div>
@@ -33,6 +38,9 @@ const BandDashboardHeader = ({ username }) => {
                   </Nav>
                </Navbar.Collapse>
          </Navbar> 
+
+
+         
         </div>
     )
 }

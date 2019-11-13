@@ -9,6 +9,7 @@
     "bootstrap": "4.3.1",
     "cookiesjs": "^3.0.3",
     "react": "^16.10.2",
+    "react-activity-feed": "^0.9.23",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.10.2",
     "react-router": "5.1.2",
