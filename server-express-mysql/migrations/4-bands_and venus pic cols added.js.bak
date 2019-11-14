@@ -1,0 +1,161 @@
+'use strict';
+
+var Sequelize = require('sequelize');
+
+/**
+ * Actions summary:
+ *
+ * createTable "Tasks", deps: []
+ * addColumn "BandPicture" to table "bands"
+ * addColumn "Bio" to table "bands"
+ * addColumn "Price" to table "bands"
+ * addColumn "PersonalWebsite" to table "bands"
+ * addColumn "Facebook" to table "bands"
+ * addColumn "Instagram" to table "bands"
+ * addColumn "VenuePicture" to table "venues"
+ * changeColumn "PhoneNumber" on table "venues"
+ *
+ **/
+
+var info = {
+    "revision": 4,
+    "name": "bands and venus pic cols added",
+    "created": "2019-11-04T22:25:36.105Z",
+    "comment": ""
+};
+
+var migrationCommands = [{
+        fn: "createTable",
+        params: [
+            "Tasks",
+            {
+                "id": {
+                    "type": Sequelize.INTEGER,
+                    "field": "id",
+                    "autoIncrement": true,
+                    "primaryKey": true
+                },
+                "name": {
+                    "type": Sequelize.STRING,
+                    "field": "name"
+                },
+                "complete": {
+                    "type": Sequelize.BOOLEAN,
+                    "field": "complete"
+                }
+            },
+            {}
+        ]
+    },
+    {
+        fn: "addColumn",
+        params: [
+            "bands",
+            "BandPicture",
+            {
+                "type": Sequelize.BLOB,
+                "field": "BandPicture"
+            }
+        ]
+    },
+    {
+        fn: "addColumn",
+        params: [
+            "bands",
+            "Bio",
+            {
+                "type": Sequelize.STRING(1024),
+                "field": "Bio"
+            }
+        ]
+    },
+    {
+        fn: "addColumn",
+        params: [
+            "bands",
+            "Price",
+            {
+                "type": Sequelize.INTEGER,
+                "field": "Price"
+            }
+        ]
+    },
+    {
+        fn: "addColumn",
+        params: [
+            "bands",
+            "PersonalWebsite",
+            {
+                "type": Sequelize.STRING,
+                "field": "PersonalWebsite"
+            }
+        ]
+    },
+    {
+        fn: "addColumn",
+        params: [
+            "bands",
+            "Facebook",
+            {
+                "type": Sequelize.STRING,
+                "field": "Facebook"
+            }
+        ]
+    },
+    {
+        fn: "addColumn",
+        params: [
+            "bands",
+            "Instagram",
+            {
+                "type": Sequelize.STRING,
+                "field": "Instagram"
+            }
+        ]
+    },
+    {
+        fn: "addColumn",
+        params: [
+            "venues",
+            "VenuePicture",
+            {
+                "type": Sequelize.BLOB,
+                "field": "VenuePicture"
+            }
+        ]
+    },
+    {
+        fn: "changeColumn",
+        params: [
+            "venues",
+            "PhoneNumber",
+            {
+                "type": Sequelize.STRING,
+                "field": "PhoneNumber"
+            }
+        ]
+    }
+];
+
+module.exports = {
+    pos: 0,
+    up: function(queryInterface, Sequelize)
+    {
+        var index = this.pos;
+        return new Promise(function(resolve, reject) {
+            function next() {
+                if (index < migrationCommands.length)
+                {
+                    let command = migrationCommands[index];
+                    console.log("[#"+index+"] execute: " + command.fn);
+                    index++;
+                    queryInterface[command.fn].apply(queryInterface, command.params).then(next, reject);
+                }
+                else
+                    resolve();
+            }
+            next();
+        });
+    },
+    info: info
+};

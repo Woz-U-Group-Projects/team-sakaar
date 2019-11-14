@@ -16,6 +16,15 @@ authService.signUser = user => {
     return token
 }
 
+authService.signAccount = user => {
+    const accountToken = jwt.sign(
+        {AccountType: user.AccountType},
+        'secretkey',
+        {expiresIn: '1h'}
+    );
+    return accountToken
+}
+
 
 //decrypt the token and find the user,
 authService.verifyUser = token => {
@@ -27,6 +36,7 @@ authService.verifyUser = token => {
         UNABLE_TO_VERIFY_USER
             ${error}
         `)
+        
         return null
     }
 };

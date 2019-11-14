@@ -1,0 +1,65 @@
+'use strict';
+
+var Sequelize = require('sequelize');
+
+/**
+ * Actions summary:
+ *
+ * changeColumn "BandPicture" on table "bands"
+ * changeColumn "VenuePicture" on table "venues"
+ *
+ **/
+
+var info = {
+    "revision": 5,
+    "name": "noname",
+    "created": "2019-11-04T22:37:32.651Z",
+    "comment": ""
+};
+
+var migrationCommands = [{
+        fn: "changeColumn",
+        params: [
+            "bands",
+            "BandPicture",
+            {
+                "type": Sequelize.BLOB(),
+                "field": "BandPicture"
+            }
+        ]
+    },
+    {
+        fn: "changeColumn",
+        params: [
+            "venues",
+            "VenuePicture",
+            {
+                "type": Sequelize.BLOB(),
+                "field": "VenuePicture"
+            }
+        ]
+    }
+];
+
+module.exports = {
+    pos: 0,
+    up: function(queryInterface, Sequelize)
+    {
+        var index = this.pos;
+        return new Promise(function(resolve, reject) {
+            function next() {
+                if (index < migrationCommands.length)
+                {
+                    let command = migrationCommands[index];
+                    console.log("[#"+index+"] execute: " + command.fn);
+                    index++;
+                    queryInterface[command.fn].apply(queryInterface, command.params).then(next, reject);
+                }
+                else
+                    resolve();
+            }
+            next();
+        });
+    },
+    info: info
+};

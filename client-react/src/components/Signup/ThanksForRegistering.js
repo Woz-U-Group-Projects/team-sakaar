@@ -5,19 +5,20 @@ import { useHistory, useLocation } from 'react-router-dom';
 import {CheckSquare} from 'styled-icons/feather';
 
 import './ThanksForRegistering.css';
+import Header from '../Header/HeaderWithDropdown';
 
 function ThanksForRegistering() {
-    console.log('TFR')
 
     let history = useHistory();
     let location = useLocation();
-    let login = location.state[0];
-    console.log('login:',login)
-    console.log( typeof login )
+    let login = location.state === undefined? '':location.state.map(l => l)
+    
     let [count, setCount] = useState(3);
-    let counter = setInterval( countDown, 1000);
+    let counter; 
+    let stopCounter = null; 
+    let countDown = null;
 
-    function countDown(){
+    countDown = () => {
 
         if( count == 0){
             stopCounter();
@@ -27,21 +28,26 @@ function ThanksForRegistering() {
         }
     }
 
-    function stopCounter(){
-        console.log('CLEAR_COUNT: ',counter)
-        clearInterval(counter)
-    }
-
      
+    counter = setInterval( countDown, 1000);
 
-        
+    stopCounter = () => clearInterval(counter);
     
+    useEffect( () => {
+
+        return () => {
+            stopCounter()
+        }
+        
+    });
+        
   
 
 
 
     return(
         <div>
+            <Header /> <hr />
         <Container>
             <Row>
                 <Col>

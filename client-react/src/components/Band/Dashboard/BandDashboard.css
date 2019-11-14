@@ -1,12 +1,24 @@
-#profile-container {
-    margin-top: 5%;
+@import url('https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap');
+
+#col-text {
+    font-family: 'Big Shoulders Text';
+    font-size: '7em';
+    text-align: left;
 }
-#profile-edit #icon {
-    cursor: pointer;
-}
-#client-profile-pic {
-    background-image: url('../../../images/profile-pic400x400.jpg');
+
+#band-picture {
+    margin-top: 0px;
+    max-width: 100%;
+    height: 500px;
+    background-image: url("../../../images/grandCanon.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+a {
+    font-size: 1em;
 
 }
+
+
+

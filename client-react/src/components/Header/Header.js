@@ -47,7 +47,7 @@ function Header() {
         <span id="login-signup col-xs-12" className="float-right">
 
           <a
-            href="/login"
+            href="/"
             style={anchorStyles}
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}

@@ -1,5 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+
+////////I COMMENTED OUT A LOT OF THE CODE. FEEL FREE TO FIX.
 
 
 import './Signup.css';
@@ -125,9 +128,11 @@ function Signup( props ) {
        
         <div> 
             <Header /> <hr/>
-            <div className='bg-info text-white w-75 mx-auto p-3 rounded' style={{position:'relative', marginTop:'0px',display:!status?'none':''  }}> <i>{statusMessage}</i> </div>
-            <Container id='container'>
-                <Row className='w-100 mx-auto mt-5' id='row' >
+            <div className='bg-info text-white w-75 mx-auto p-3' style={{position:'relative', marginTop:'0px',display:!status?'none':''  }}> 
+                <i>{statusMessage}</i> 
+            </div>
+            <Container id='container' style={{height:700,borderRadius:7}}>
+                <Row className='w-100 mx-auto mt-3' id='row'>
                     <Col className='' sm={6} >
 
                         <Form className='' id='form' onSubmit={handleSubmit}>
@@ -233,7 +238,7 @@ function Signup( props ) {
                                 <h3 className='mt-3 text-white' style={{textShadow:'1px 1px 3px black',fontSize:'2.5em'}}>Type of Account</h3> <hr className='border-white'/>
                                 <small className='text-white border border-info bg-info p-2 rounded'>The Account Type will be <strong>Client</strong> by default</small> <br/>
                                 <ToggleButtonGroup className='mt-3' type="checkbox" value={accountType} onChange={handleChange}>
-                                    <ToggleButton value={'Client'}>Client</ToggleButton>
+                                    <ToggleButton value={'Client'}>Band/Musician</ToggleButton>
                                     <ToggleButton value={'Venue'}>Venue</ToggleButton>
                                 </ToggleButtonGroup>
                             </div>
@@ -244,6 +249,8 @@ function Signup( props ) {
             <Footer />
         </div>
     )
+
+
 
 }
 

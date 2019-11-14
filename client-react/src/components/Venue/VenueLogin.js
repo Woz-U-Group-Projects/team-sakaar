@@ -27,6 +27,7 @@ function VenueLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [submit, setSubmit] = useState(false);
+  const [error, setError] = useState('');
   const [status, setStatus] = useState('');
   const [statusMessage, setStatusMessage] = useState('');
 
@@ -50,19 +51,17 @@ function VenueLogin() {
         // console.log(res.data)
         if( res.data.status === parseInt( 401 ) ){
               setStatus( res.data.status )
+              setError( res.data.message )
               console.log( res.data.status)
         }
   
         if( res.data.status === parseInt( 200 ) ){
             setStatus( res.data.status )
-            //set cookie and verify
-            // document.cookie = `jwt=${res.data.token}`;
+            
+            //set cookie and verify;
             cookies({ jwt: res.data.token })
 
-            history.push(
-                `/venue-dashboard`, 
-                [ res.data ]
-            );
+            history.push(`/venue-profile`);
         }
        
     })
@@ -75,14 +74,16 @@ function VenueLogin() {
       <VenueHeader />
       <Container>
         <Row>
-          <Col id="venue-pic-container" className="shadow-lg" />
+          <Col md={12} id="venue-pic-container" className="shadow-lg" style={{height:500,borderRadius:7}} />
         </Row>
 
         <Row>
-          <Col className="mt-5 p-5" md={12}>
+        <Col className="mt-5 p-5 mx-auto" md={12} style={{position:'relative',top:'-30px'}}>
 
-            <div className="w-75 m-auto">
-            <Form id='form' onSubmit={handleSubmit}>
+        <div className='text-white my-3 mx-auto rounded bg-danger w-50' style={{display:error?'':'none'}}> <i>{error}</i> </div>
+
+            
+            <Form id='form' onSubmit={handleSubmit}  className="w-75 m-auto">
               <InputGroup className="mb-3 shadow">
                 <FormControl
                   type='text'
@@ -115,7 +116,7 @@ function VenueLogin() {
                 </InputGroup.Append>
               </InputGroup>
             </Form>
-            </div>
+            
           </Col>
         </Row>
       </Container>

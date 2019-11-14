@@ -6,11 +6,14 @@ module.exports = (sequelize, DataTypes) => {
     Rating: DataTypes.INTEGER,
     Review: DataTypes.STRING
   }, {});
+
   bandRatings.associate = function(models) {
     models.bandRatings.belongsTo(models.bands, {
       foreignKey: "BandId",
       targetKey: "BandId"
     });
   };
+
+  
   return bandRatings;
 };

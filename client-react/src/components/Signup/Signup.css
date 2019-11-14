@@ -1,3 +1,32 @@
+/* #container {
+    background-image: url('https://wallpapershome.com/images/pages/pic_h/2028.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: center;
+}
+
+#signup-title {
+    background-color: rgba(44,62,80,0.7);
+    padding: 40px;
+    margin: auto;
+    margin-top:  80px;
+    height: 400px;
+    margin-left: 180px;
+    text-shadow: 1px 1px 3px white;
+}
+
+#form {
+    width: 240px;
+    text-align: center;
+}
+
+
+#account-type {
+    margin-top: 17%;
+} */
+
+
 #container {
     background-image: url('https://wallpapershome.com/images/pages/pic_h/2028.jpg');
     background-size: cover;

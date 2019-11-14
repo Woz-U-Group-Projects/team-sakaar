@@ -5,9 +5,9 @@ import { Col, Row, Button } from "react-bootstrap";
 
 function Main() {
   return (
-    <Row id="Main" className="">
+    <Row id="Main" className='bg-info' style={{minHeight:700,minWidth:700,borderRadius:7}} >
       <Col className="">
-        <div className="" style={{ marginTop: 50 }}>
+        <div className="" style={{ marginTop: '12%' }} sm={12}>
           <p
             className=""
             style={{ fontSize: "2.5em", textShadow: "1px 1px 1px black" }}
@@ -21,8 +21,8 @@ function Main() {
             Are you a band looking for a local gig?
           </p>
           <p
-            className="font-weight-bold"
-            style={{ fontSize: "5em", textShadow: "1px 1px 1px black" }}
+            className="font-weight-bold" 
+            style={{ marginTop:50, fontSize: "5em", textShadow: "1px 1px 1px black" }}
           >
             We've Got You Covered!
           </p>
@@ -30,19 +30,10 @@ function Main() {
             <Button
               href='/signup'
               id="sign-up"
-              className="btn-lg active"
-              variant="outline-light"
-            >
-              Sign Up
-            </Button>
-          </p>
-          <p>
-            <Button
-              id="learn-more"
-              className="btn-lg"
+              className="btn-lg shadow-lg active"
               variant="outline-warning"
             >
-              Learn More
+              Sign Up
             </Button>
           </p>
         </div>

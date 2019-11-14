@@ -3,7 +3,8 @@ var router = express.Router();
 const mysql = require('mysql2');
 const models = require('../models');
 const authService = require('../services/auth');
-const Sequalize = require('sequelize')
+const jwt = require('jsonwebtoken');
+const Sequalize = require('sequelize');
 const Op = Sequalize.Op;
 
 /* GET home page. */
@@ -92,6 +93,50 @@ router.post('/signup', function(req, res) {
       `) )
 }); 
 
+const log = message => {
+  console.log(`
+  
+  ${message}
+  
+  `)
+}
+
+router.post('/verify', (req, res) => {
+  const token = req.body.token;
+  console.log(`
+      
+    VERIFY ROUTE
+  
+  `)
+
+
+  authService.verifyUser(token)
+  .then(user => {
+
+    if( user ) {
+
+      res.json({
+        userid: user.UserId,
+        firstname:user.FirstName,
+        lastname: user.LastName,
+        email: user.Email,
+        username: user.Username,
+        accountType: user.AccountType,
+        firstTimeLogin: user.FirstTimeLogin, 
+        verified: true
+      })
+
+    } 
+    
+    if( !user ){
+      console.log('FALSE: ',user)
+      res.json({ verified: false })
+    };
+    
+  })  
+
+});
+
 
 router.post('/band-login', (req, res) => {
   let login = req.body;
@@ -121,16 +166,19 @@ try{
         // the authService to create jwt token
         console.log('Getting Token')
         let token = authService.signUser(user);
+
+
         // Adds token to response as a cookie
         res.cookie('jwt', token);
 
         res.json({
           token,
-          firstname:user.FirstName,
-          lastname: user.LastName,
-          email:user.Email,
-          username: user.Username,
-          accountType: user.AccountType,
+          firstname:      user.FirstName,
+          lastname:       user.LastName,
+          email:          user.Email,
+          username:       user.Username,
+          accountType:    user.AccountType,
+          firstTimeLogin: user.FirstTimeLogin,
           status: parseInt(200),
           message: 'Login Successful'
         });
@@ -138,58 +186,134 @@ try{
 
       } else {
         console.log('Wrong password');
-        res.sendStatus(401).json({
+        res.json({
            message: 'Wrong password',
            status: parseInt(401)
         })
       }
     }
     
-    });//then
+    }) //then
+    .catch( error => console.log('An Error Occured: ',error))
 
   } catch (err ) {
     console.log('Server might be down. ', err)
   }
 });
 
-const log = message => {
-  console.log(`
+router.get('/band-settings/:id', (req, res) => {
+  const id = parseInt(req.params.id);
   
-  ${message}
+  models.bands
+    .findByPk( id )
+      .then(userSettings => {
+
+        if( !userSettings ){
+          console.log(`
+            No user settings: 
+          `,userSettings)
+          res.json({
+            message: ['No band settings', false]
+          })
+        }
+        
+        if( userSettings ){
+          res.json({
+            message: ['Loading settings', true],
+            settings: userSettings
+          })
+
+        }
   
-  `)
-}
-
-
-
-router.post('/verify', (req, res) => {
-  const token = req.body.token;
-  console.log('TOKEN ',token)
-
-  authService.verifyUser(token)
-  .then(user => {
-    console.log(`
-      User
-    `, user)
-
-    if(user) {
-      res.json({
-        firstname:user.Firstname,
-        lastname: user.LastName,
-        email: user.Email,
-        username: user.Username,
-        accountType: user.AccountType,
-        verified: true
       })
-    }else {
-      res.json({
-        verified: false
+      .catch(error => {
+        console.log(`
+          An Error occured -> 
+        `, error)
+        res.json({
+          message: error
+        })
       })
-    }
-  })
-  
-
 });
+
+router.post('/submit-settings/:id', (req, res) => {
+  const id = req.params.id;
+  const band = req.body;
+
+  console.log('****** REQ BODY ******: ', band)
+
+  models.bands
+      .findOrCreate({ 
+        where: { BandId: id },
+        defaults: {
+          ZipCode: band.ZipCode,
+          Name: band.Name,
+          ContactPerson: band.ContactPerson,
+          Genre: band.Genre,
+          Bio: band.Bio,
+          Price: band.Price,
+          PersonalWebsite: band.PersonalWebsite,
+          Facebook: band.Facebook,
+          Instagram: band.Instagram
+        } 
+      })
+      .spread( (user, created) => {
+        console.log(created)
+
+        if( created ){
+          console.log('SAVE_SETTINGS: RESULT')
+          console.log('USER ', user)
+          res.json({
+            message: 'Data has been saved',
+            status: 201
+           })
+         }
+
+         if( !created ){
+            console.log('ERROR SAVING SETTINGS');
+            res.json({
+              message: 'Error updating settings',
+              status: 401
+            })
+          }
+
+      })
+      .catch( error => console.log('SPREAD ERROR: ',error) )
+})
+
+router.put('/save-settings/:id', (req, res) => {
+  const id = req.params.id;
+  const band = req.body;
+
+  models.bands
+      .update( band,{ where: { BandId: id } })
+      .then( result => {
+
+        if( result ){
+          console.log(`
+            UPDATE: TRUE - RETURNING OBJ
+          `)
+          res.json({
+            message: 'Data has been saved',
+            status: 201
+           })
+         }
+
+         if( !result ){
+            console.log(`
+              ERROR SAVING SETTINGS
+            `);
+            res.json({
+              message: 'Error updating settings',
+              status: 401
+            })
+          }
+
+      })
+      .catch( error => console.log('UPDATE ERROR: ',error) )
+})
+
+
 
 router.post('/venue-login', (req, res) => {
   let login = req.body;
@@ -235,7 +359,7 @@ try{
 
       } else {
         console.log('Wrong password');
-        res.sendStatus(401).json({
+        res.json({
            message: 'Wrong password',
            status: parseInt(401)
         })
@@ -249,7 +373,133 @@ try{
   }
 });
 
+router.get('/venue-settings/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  
+  models.venues
+    .findByPk( id )
+      .then(userSettings => {
 
+        if( !userSettings ){
+          console.log(`
+            No user settings: 
+          `,userSettings)
+          res.json({
+            message: 'No band settings'
+          })
+        }
+        
+        if( userSettings ){
+
+          res.json({
+            message: 'Loading settings',
+            settings: userSettings
+          })
+
+        }
+  
+      })
+      .catch(error => {
+        console.log(`
+          An Error occured -> 
+        `, error)
+        res.json({
+          message: error
+        })
+      })
+});
+
+router.post('/venue-submit-settings/:id', (req, res) => {
+  const id = req.params.id;
+  const venue = req.body;
+
+  console.log(`
+  
+    ****** REQ BODY ******
+    venue
+  `)
+
+  models.venues
+      .findOrCreate({ 
+        where: { VenueId: id },
+        defaults: {
+          Name: venue.Name,
+          Address: venue.Address,
+          ContactPerson: venue.ContactPerson,
+          PhoneNumber: venue.PhoneNumber,
+          FirstTimeLogin: venue.FirstTimeLogin
+        } 
+      })
+      .spread( (user, created) => {
+        console.log(created)
+
+        if( created ){
+          console.log('SAVE_SETTINGS: RESULT')
+          console.log('USER ', user)
+          res.json({
+            message: 'Data has been saved',
+            status: 201
+           })
+         }
+
+         if( !created ){
+            console.log('ERROR SAVING SETTINGS');
+            res.json({
+              message: 'Error updating settings',
+              status: 401
+            })
+          }
+
+      })
+      .catch( error => console.log('SPREAD ERROR: ',error) )
+})
+
+router.post('/venue-save-settings/:id', (req, res) => {
+  const venue = req.body;
+  const id = parseInt(req.params.id);
+
+  console.log(`
+        VENUE SAVE SETTING
+
+        VENUE BODY 
+        ${JSON.stringify(venue)}
+
+        ID: ${id}
+        
+  `)
+
+  models.venues
+      .update( req.body, { where: { VenueId: id } })
+      .then( result => {
+
+          if( result ){
+              console.log(`
+              SAVE SETTINGS
+              Result: ${result}
+              
+              `)
+              res.json({
+                message: 'Data has been saved.',
+                status: 201
+              })
+          }
+          
+          if( !result ){
+              console.log('ERROR UPDATING SETTINGS', result);
+              res.json({
+                message: 'Error updating saving data',
+                status: 401
+              })
+          }
+      })
+      .catch(error => {
+        console.log(`
+        AN ERROR OCCURED 
+        ${JSON.stringify(error)}
+        `);
+
+      })
+});
 
 
 module.exports = router;

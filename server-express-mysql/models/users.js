@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    FirstTimeLogin: { type: DataTypes.BOOLEAN, defaultValue: 1}
   }, {});
   users.associate = function(models) {
     // associations can be defined here

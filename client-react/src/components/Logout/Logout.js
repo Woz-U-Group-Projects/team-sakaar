@@ -4,6 +4,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import {CheckSquare} from 'styled-icons/feather';
 import cookies from 'cookiesjs';
+import Header from '../Header/HeaderWithDropdown';
 
 
 function Logout() {
@@ -26,21 +27,10 @@ function Logout() {
 
     counter = setInterval( countDown, 1000);
 
-    function stopCounter(){
-        console.log('CLEAR_COUNT: ',counter)
-        clearInterval(counter)
-    }
+    const stopCounter = () => clearInterval(counter);
 
-    function deleteJWTCookie(){
-        
-        cookies({ jwt: ''}, {
-            expires: new Date(0)
-        })
+    const  deleteJWTCookie = () => cookies({ jwt: ''}, { expires: new Date(0) });
 
-  
-    }
-
-     
     useEffect( () => {
         deleteJWTCookie();
 
@@ -57,6 +47,7 @@ function Logout() {
 
     return(
         <div>
+            <Header /> <hr />
         <Container>
             <Row>
                 <Col>

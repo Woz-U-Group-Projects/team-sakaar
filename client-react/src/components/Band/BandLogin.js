@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import cookies from 'cookiesjs';
 
 import "./Band.css";
 import {
@@ -20,24 +21,21 @@ import Footer from "../Footer/Footer";
 function BandLogin() {
   const axios = require('axios');
   let history = useHistory();
+  let location = useLocation();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [submit, setSubmit] = useState(false);
+  const [error, setError] = useState('');
   const [status, setStatus] = useState('');
   const [statusMessage, setStatusMessage] = useState('');
+  const [firstTimeLogin, setFirstTimeLogin] = useState(true)
 
-  useEffect( () => {
-    console.log(`
-      username: ${username}
-    `)
-  })
 
   const handleSubmit = e => {
-    const url = 'http://localhost:3001/band-login';
-  
     e.preventDefault();
-    
+
+    const url = 'http://localhost:3001/band-login';
     axios.post( url, {
         Username: username,
         Password: password,
@@ -47,18 +45,22 @@ function BandLogin() {
         // console.log(res.data)
         if( res.data.status === parseInt( 401 ) ){
               setStatus( res.data.status )
+              setError( res.data.message )
               console.log( res.data.status)
         }
   
         if( res.data.status === parseInt( 200 ) ){
             setStatus( res.data.status )
+
             //set cookie and verify
-            document.cookie = `jwt=${res.data.token}`;
-            history.push(
-                `/band-dashboard`, 
-                [ res.data ]
-            );
-        }
+            cookies({ jwt: res.data.token });
+
+              if( res.data.firstTimeLogin ){
+                history.push(`/band-profile`);
+              }
+
+              
+        };
        
     })
     .catch( err => console.log( err ) )
@@ -69,14 +71,17 @@ function BandLogin() {
     <div>
       <BandHeader />
       <Container>
+
         <Row>
-          <Col id="client-pic-container" className="shadow-lg" />
+          <Col md={12} id="client-pic-container" className="shadow-lg"  style={{height:500,borderRadius:7}} />
         </Row>
+        
 
         <Row>
-          <Col className="mt-5 p-5" md={12}>
+        <Col className="mt-5 p-5 mx-auto" md={12} style={{position:'relative',top:'-30px'}}>
 
-          <div className='text-white my-3 rounded'> <i>Error 401 </i> </div>
+          <div className='text-white my-3 mx-auto rounded bg-danger w-50' style={{display:error?'':'none'}}> <i>{error}</i> </div>
+
             <Form id='form' onSubmit={handleSubmit} className="w-75 m-auto">
               <InputGroup className="mb-3 shadow">
                 <FormControl
