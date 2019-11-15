@@ -1,0 +1,25 @@
+{
+  "name": "team-sakaar",
+  "version": "1.0.0",
+  "description": "Our project goal is to develop an application that helps to connect local and national bands and venues. This website will allow venues to reach out to bands and offer gigs as well as allow bands to reach out to venues that have gigs available on their page. Bands will be able to list their information, price, genre, and bio, as well as links to any performances that they may have recorded and their social media pages. Venues will have many of the same features as well as being able to post gigs, offering price, images of the venue and their location. The venues and bands will both have the ability to write reviews and rate each other.",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd server-express-mysql && npm start",
+    "client": "cd client-react && npm start",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Woz-U-Group-Projects/team-sakaar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Woz-U-Group-Projects/team-sakaar/issues"
+  },
+  "homepage": "https://github.com/Woz-U-Group-Projects/team-sakaar#readme",
+  "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "concurrently": "^5.0.0"
+  }
+}
