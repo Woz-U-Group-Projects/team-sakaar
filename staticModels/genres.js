@@ -36,7 +36,7 @@ module.exports.genre = [
       name:'Musica Urbana'
     },
     {
-      name:'Mexicaa'
+      name:'Mexicana'
     },
     {
       name:'Jazz'
