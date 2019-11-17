@@ -19,9 +19,6 @@ import Footer from '../../Footer/Footer';
 const axios = require('axios');
 
 
-
-
-
 const BandDashboard = () => {
    let history = useHistory();
    let user = '';
@@ -304,7 +301,9 @@ const BandDashboard = () => {
 
             </Col>
          </Row>
-         <Row className='m-5'>
+
+         {/* POST INPUT - POST WILL BE SEND TO POST ROUTE */}
+         {/* <Row className='m-5'>
             <Col>
                <div>
                <Form onSubmit={handleSubmit}>
@@ -329,7 +328,9 @@ const BandDashboard = () => {
                </div>
               
             </Col>
-         </Row>
+         </Row> * Post Input */}
+
+
          </Container>
          {/* <Footer /> */}
       </section>

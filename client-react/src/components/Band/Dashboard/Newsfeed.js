@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { StreamApp, NotificationDropdown, FlatFeed, LikeButton, Activity, CommentList, CommentField, StatusUpdateForm } from 'react-activity-feed';
@@ -12,12 +12,15 @@ import './BandDashboard.css';
 
 const NewsFeed = props => {
   const history = useHistory();
+  const username = history.location.state.user.username;
+  
+
   
     return (
      <Container>
        <Row>
          <Col>
-       <BandDashboardHeader />
+       <BandDashboardHeader username={username} />
         <div className='newsfeed'><StreamApp
           
             apiKey="du8he7epvp94"
@@ -30,7 +33,8 @@ const NewsFeed = props => {
                 className=''
                 onClick={ () => history.goBack()} 
                 style={{backgroundColor:'#6DD68B', border: 'none'}}
-              > &#8249; Back </Button>
+              > &#8249; Back  </Button>
+
               <NotificationDropdown notify className='m-5'/>
 
             </div>

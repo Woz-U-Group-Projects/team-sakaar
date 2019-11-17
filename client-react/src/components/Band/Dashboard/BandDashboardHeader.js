@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation, useHistory, useRouteMatch} from 'react-router-dom';
-import {Nav, Navbar, NavDropdown, Container, Row, Col} from 'react-bootstrap';
+import {Nav, Navbar, NavDropdown, Container, Row, Col, Button} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 import {Note} from 'styled-icons/octicons/Note'
@@ -10,12 +10,12 @@ const BandDashboardHeader = ({ userData, username }) => {
 
    const location = useLocation();
    const history = useHistory();
-   const m = useRouteMatch("/news-feed"); 
+   const m = useRouteMatch("/news-feed");
+   const settingsPage = useRouteMatch('/band-settings') 
 
-   const handleSettings = () => {
 
-      history.push('/band-settings', {user:userData[0]} )
-   }
+   const handleNewFeed = () => history.push('/news-feed' , {user:userData[0] });
+
 
 
    return(
@@ -30,7 +30,7 @@ const BandDashboardHeader = ({ userData, username }) => {
                   <Nav className="">
                      <Nav.Link href="/logout">Logout</Nav.Link>
                      <NavDropdown title="Settings" id="basic-nav-dropdown" className=''>
-                        <NavDropdown.Item onClick={handleSettings}>Settings</NavDropdown.Item>
+                        <NavDropdown.Item href='/band-settings'>Settings</NavDropdown.Item>
                      </NavDropdown>
                   </Nav>
                </Navbar.Collapse>
@@ -41,7 +41,7 @@ const BandDashboardHeader = ({ userData, username }) => {
              
                backgroundColor:'black',
                marginTop:70,
-               visibility: m?'hidden':'',
+               visibility: m||settingsPage?'hidden':'',
                padding: 7
             }}
             >
@@ -49,7 +49,7 @@ const BandDashboardHeader = ({ userData, username }) => {
                   <Row>
                      <Col className='d-flex justify-content-end'>
 
-                        <Link to='/news-feed' className='text-light' >
+                        <Button onClick={handleNewFeed} className='border-0 text-light' style={{backgroundColor:'black'}} >
 
                            <span 
                               className='bg-danger text-white border border-white' 
@@ -72,7 +72,7 @@ const BandDashboardHeader = ({ userData, username }) => {
                               title='post'
                            /> 
                      
-                        </Link>
+                        </Button>
                      </Col>
                   </Row>
              
