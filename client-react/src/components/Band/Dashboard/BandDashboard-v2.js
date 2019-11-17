@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, InputGroup, FormControl, Button, Form } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import cookies from 'cookiesjs';
 import {Phone} from 'styled-icons/feather/Phone'
@@ -21,6 +21,7 @@ const axios = require('axios');
 
 
 
+
 const BandDashboard = () => {
    let history = useHistory();
    let user = '';
@@ -37,6 +38,7 @@ const BandDashboard = () => {
    const [facebook, setFacebook] = useState('');
    const [instagram, setInstgram] = useState('');
    const [twitter, setTwitter] = useState('');
+   const [postData, setPostData] = useState('');
 
 
    const [id, setId] = useState('');
@@ -91,12 +93,13 @@ const BandDashboard = () => {
          
       
    }
+
    useEffect( () => {
       verifyUser(); 
    }, []);
 
    const getSettings = () => {
-
+      console.log( user )
       if( !id ){
          return 
       }
@@ -138,6 +141,27 @@ const BandDashboard = () => {
          // history.push('/band-settings');
    })
    }
+
+   const handleSubmit = e => {
+      e.preventDefault();
+      console.log('USER: ',user)
+      const url  = `http://localhost:3001/post/postID/${id}`;
+
+      axios.post( url, {
+         postData: postData,
+         FirstName: 'Nate',
+         LastName: 'Corbitt' 
+      })
+      .then( response => {
+         console.log( response )
+      })
+
+      console.log(`
+         POST:
+         ${postData}
+      `)
+   }
+
 
    useEffect( () => getSettings() ,[id]) //will update the DOM only when the id changes or update
    useEffect( () => verifyUser() ,[]); // will update the DOM once
@@ -277,6 +301,33 @@ const BandDashboard = () => {
                   </h3> 
                </div> <hr />
 
+
+            </Col>
+         </Row>
+         <Row className='m-5'>
+            <Col>
+               <div>
+               <Form onSubmit={handleSubmit}>
+               <InputGroup>
+                  <InputGroup.Prepend>
+                     <InputGroup.Text>With textarea</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <FormControl
+                     value={postData}
+                     onChange={ e => {
+                        console.log('Event: ', e);
+                        setPostData( e.target.value );
+                     }} 
+                     as="textarea" 
+                     aria-label="With textarea" 
+                  />
+                    <InputGroup.Append>
+                    <Button type='submit'>Post</Button>
+                  </InputGroup.Append>
+               </InputGroup>
+               </Form>
+               </div>
+              
             </Col>
          </Row>
          </Container>

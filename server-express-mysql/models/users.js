@@ -21,6 +21,14 @@ module.exports = (sequelize, DataTypes) => {
     AccountType: {
       type: DataTypes.STRING,
       allowNull: false,
+    }, 
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
     },
     FirstTimeLogin: { type: DataTypes.BOOLEAN, defaultValue: 1}
   }, {});

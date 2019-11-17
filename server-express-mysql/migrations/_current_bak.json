@@ -104,11 +104,6 @@
                     },
                     "field": "FirstTimeLogin",
                     "seqType": "Sequelize.BOOLEAN"
-                },
-                "Nothing": {
-                    "allowNull": true,
-                    "field": "Nothing",
-                    "seqType": "Sequelize.STRING"
                 }
             },
             "indexes": []
@@ -257,5 +252,5 @@
             "indexes": []
         }
     },
-    "revision": 10
+    "revision": 11
 }
