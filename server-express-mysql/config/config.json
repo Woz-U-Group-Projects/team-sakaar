@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "Password1",
+    "database": "SakaarDB",
+    "host": "newsakaar.cglcm5rnjmgr.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "define": { "timestamps": false }
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false}
+  }
