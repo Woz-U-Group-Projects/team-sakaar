@@ -5,7 +5,7 @@
     "database": "SakaarDB",
     "host": "newsakaar.cglcm5rnjmgr.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
-    "define": { "timestamps": false }
+    "define": { "timestamps": true }
   },
   "test": {
     "username": "root",
