@@ -31,7 +31,7 @@ function AnchorLeave(e) {
 
 function Header() {
 
-    let location = useLocation();
+   // let location = useLocation();
 
   return (
     <header  id='header' className="p-3 pb-5" style={{ height: "64px"  }} >
@@ -78,7 +78,7 @@ function Header() {
             onMouseEnter={AchorEnter}
             onMouseLeave={AnchorLeave}
           >
-            Venue Login
+            Musician Login
           </Dropdown.Item>
         </DropdownButton>
 

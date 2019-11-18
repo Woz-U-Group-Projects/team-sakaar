@@ -41,7 +41,4 @@ const VenueDashboardHeader = ({ userData, username }) => {
 
 }
 
-
-export default VenueDashboardHeader;
-
-
+export default VenuDashboardHeader;

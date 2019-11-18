@@ -12,10 +12,10 @@ function AboutUs() {
       <Container>
         <Row style={{minHeight:700}}>
           <Col>
-            <h1 className="mt-5 mb-5"> About </h1>
+            <h1 className="mt-5 mb-5"> About Us </h1>
             <hr />
 
-           <div className=''>
+           <div>
              <p className='p-3' style={{letterSpacing:2, fontSize:'1.2em'}}>
                 <strong style={{}}>On Demand Bands</strong> seeks to create a social media platform where musicians
                 can offer their services to prospective venues, event coordinators, or

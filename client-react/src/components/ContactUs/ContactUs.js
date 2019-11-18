@@ -30,39 +30,108 @@ function ContactUs() {
       <Container>
         <Row>
           <Col className=''>
-            <h1 className="mt-5 mb-5 text-info"> Contact Us </h1>
+            <h1 className="mt-5 mb-5"> Contact Us  <a href='/contact-us-v2' className='btn btn-info float-right' >Contact-us-V2</a> </h1>
             
             <div>
-            {
-                    creaters.map( creater => {
 
-                      return  <Row className='border'>
-                                <Col className='border-right'>
-                                  <Figure>
-                                    <Figure.Image
-                                      width={75}
-                                      height={75} 
-                                      // thumbnail
-                                      src={userImage}
-                                      alt='creater image'
-                                    />
-                                    <Figure.Caption>
-                                        {creater.name} 
-                                    </Figure.Caption>
-                                  </Figure>
-                              </Col>
-                              <Col className='bg-light' style={{height:'auto'}}>
-                                <Figure.Caption className='mt-5 text-info'>
-                                  {creater.email}
-                                </Figure.Caption>
-                              </Col>
-                      </Row>
+              <Table className='mx-auto' variant='' >
+                <thead>
+                </thead>
 
-                    })
-                  }
+                <tbody>
+                <tr>
+                <td>
+                    <Figure>
+                        <Figure.Image 
+                          src="http://martialclipart.tripod.com/sitebuildercontent/sitebuilderpictures/shadowkick.jpg" 
+                          alt='me'
+                        />
+                        <Figure.Caption>
+                            Ben Contreras 
+                        </Figure.Caption>
+                      </Figure>                         
+                      </td>
+                      <td className='align-middle'>
+                        <a href='mailto:benminer@protonmail.com'> 
+                          <span className='text-info' style={{textShadow:'0px 0px 0px black'}} >benminer</span><span className='text-dark'>@protonmail.comm</span>
+                        </a>
+                      </td>
+                  </tr>
+                  <tr>
+                  <td>
+                    <Figure>
+                        <Figure.Image 
+                          src="http://martialclipart.tripod.com/sitebuildercontent/sitebuilderpictures/shadowkick.jpg" 
+                          alt='me'
+                        />
+                        <Figure.Caption>
+                          James Hamilton
+                        </Figure.Caption>
+                      </Figure>                         
+                      </td>
+                    <td className='align-middle'>jamesleehamilton210@gmail.com</td>
+                  </tr>
+                  <tr>
+                  <td>
+                    <Figure>
+                        <Figure.Image 
+                          src="http://martialclipart.tripod.com/sitebuildercontent/sitebuilderpictures/shadowkick.jpg" 
+                          alt='me'
+                        />
+                        <Figure.Caption>
+                        Josh Engelbrecht
+                        </Figure.Caption>
+                      </Figure>                         
+                      </td>
+                    <td className='align-middle'>jshnglbrcht@gmail.com</td>
+                  </tr>
+                  <tr>
+                  <td>
+                    <Figure>
+                        <Figure.Image 
+                          src="http://martialclipart.tripod.com/sitebuildercontent/sitebuilderpictures/shadowkick.jpg" 
+                          alt='me'
+                        />
+                        <Figure.Caption>
+                        Michael Reynolds 
+                        </Figure.Caption>
+                      </Figure>                         
+                      </td>
+                    <td className='align-middle'>michaelreynolds537@gmail.com</td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <Figure>
+                        <Figure.Image 
+                          src="http://martialclipart.tripod.com/sitebuildercontent/sitebuilderpictures/shadowkick.jpg" 
+                          alt='me'
+                        />
+                        <Figure.Caption>
+                          Nathan Corbitt
+                        </Figure.Caption>
+                        </Figure>                         
+                      </td>
+                    <td className='align-middle'>ncorbitt@gmail.com</td>
+                  </tr>
+                  <tr>
+                  <td>
+                        <Figure>
+                        <Figure.Image 
+                          src="http://martialclipart.tripod.com/sitebuildercontent/sitebuilderpictures/shadowkick.jpg" 
+                          alt='me'
+                        />
+                        <Figure.Caption>
+                        Steve Chinburg
+                        </Figure.Caption>
+                        </Figure>                         
+                      </td>
+                    <td className='align-middle'>steve_chinburg@hotmail.com</td>
+                  </tr>
+                </tbody>
+              </Table>
             </div>
           </Col>
-        </Row>
+        </Row> <hr/>
       </Container>
       <Footer />
     </div>
