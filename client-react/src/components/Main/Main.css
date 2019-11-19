@@ -1,0 +1,26 @@
+/* #Main {
+  background: linear-gradient(
+    45deg,
+    hsl(240, 40%, 16%),
+    hsl(240, 40%, 50%),
+    hsl(240, 40%, 10%)
+  );
+  color: white;
+} */
+
+/* https://www.thebostoncalendar.com/system/events/photos/000/026/871/original/Party_Dream_Color_party.jpg?1443946618 */
+
+#Main {
+  background-image: url("https://www.thebostoncalendar.com/system/events/photos/000/026/871/original/Party_Dream_Color_party.jpg?1443946618");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+#sign-up {
+  /* background: linear-gradient(to right, hsl(147, 98%, 28%) 60%, purple); */
+}
+
+#learn-more {
+  /* background: linear-gradient(to right, purple 60%, hsl(147, 98%, 28%)); */
+}
