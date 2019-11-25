@@ -1,7 +1,17 @@
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
 var models = require('../routes');
+
+const mysql = require('mysql2');
+const authService = require('../services/auth');
+const jwt = require('jsonwebtoken');
+const Sequalize = require('sequelize');
+const Op = Sequalize.Op;
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { myName: 'Team-Sakaar' });
+});
 
 router.get('/', function(req, res, next) {
   models.venue
@@ -44,7 +54,6 @@ router.put("/:id", function (req, res, next) {
 
 
   module.exports = router;
-=======
 const mysql = require('mysql2');
 const models = require('../models');
 const authService = require('../services/auth');
@@ -54,11 +63,5 @@ const Op = Sequalize.Op;
 
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', { myName: 'Team-Sakaar' });
-});
-  
 
-module.exports = router;
->>>>>>> dev
+
