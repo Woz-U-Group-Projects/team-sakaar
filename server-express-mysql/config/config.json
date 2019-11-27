@@ -1,11 +1,11 @@
 {
   "development": {
-    "username": "root",
-    "password": "Password1!",
-    "database": "SakaarDB",
-    "host": "127.0.0.1",
+    "username": "admin",
+    "password": "Password1",
+    "database": "onDemanBandsDB",
+    "host": "ondemanbandsdb.cubu1dy646sm.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
-    "define": { "timestamps": false }
+    "define": { "timestamps": true }
   },
   "test": {
     "username": "root",
@@ -16,10 +16,10 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "admin",
+    "password": "Password1",
+    "database": "sakaar",
+    "host": "sakaar.cubu1dy646sm.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "operatorsAliases": false
   }

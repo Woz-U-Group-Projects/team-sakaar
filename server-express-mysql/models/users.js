@@ -8,15 +8,29 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     FirstName: DataTypes.STRING,
-    LastName: DataTypes.STRING,
-    Username: {
-      type: DataTypes.STRING,
-      unique: true
-    },
-    Password: DataTypes.STRING
+
+    LastName:  DataTypes.STRING,
+
+    Username:{ type: DataTypes.STRING, unique: true},
+
+    Email:{ type: DataTypes.STRING, unique: true },
+
+    Password: DataTypes.STRING,
+
+    AccountType:{ type: DataTypes.STRING, allowNull: false,},
+
+    Admin:{ type: DataTypes.BOOLEAN, defaultValue: false}, 
+
+    createdAt:{ allowNull: false, type: DataTypes.DATE },
+
+    updatedAt:{ allowNull: false, type: DataTypes.DATE },
+
+    FirstTimeLogin:{ type: DataTypes.BOOLEAN, defaultValue: true}
+
   }, {});
   users.associate = function(models) {
     // associations can be defined here
+
   };
   return users;
 };
