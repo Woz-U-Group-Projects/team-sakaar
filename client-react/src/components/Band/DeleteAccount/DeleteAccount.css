@@ -1,0 +1,22 @@
+main {
+    
+    min-height: calc(100vh - 80px - 200px );
+   
+}
+
+.delete-account-bg {
+    background: linear-gradient(45deg, purple, orange) !important;
+}
+
+#delete-account-container {
+    min-height: 200px;
+}
+
+
+
+@media (min-width: 576px ){
+    
+    #delete-account-container {
+        margin-top: -200px;
+    }
+  }
