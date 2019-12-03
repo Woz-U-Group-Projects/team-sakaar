@@ -34,7 +34,7 @@ function BandLogin() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const url = 'http://ec2-54-242-133-39.compute-1.amazonaws.com:3001/band-login';
+    const url = 'http://localhost:3001/band-login';
     axios.post( url, {
         Username: username,
         Password: password,

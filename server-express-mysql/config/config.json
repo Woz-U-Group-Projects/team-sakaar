@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "admin",
-    "password": "Password1",
-    "database": "onDemanBandsDB",
-    "host": "ondemanbandsdb.cubu1dy646sm.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "Mysql00##",
+    "database": "SakaarDB",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "define": { "timestamps": true }
   },
@@ -19,7 +19,7 @@
     "username": "admin",
     "password": "Password1",
     "database": "sakaar",
-    "host": "sakaar.cubu1dy646sm.us-east-1.rds.amazonaws.com",
+    "host": "",
     "dialect": "mysql",
     "operatorsAliases": false
   }

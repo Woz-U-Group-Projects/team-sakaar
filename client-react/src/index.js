@@ -11,7 +11,7 @@ import AboutUs from "./components/AboutUs/AboutUs";
 
 import ContactUs from "./components/ContactUs/ContactUs";
 import Signup from "./components/Signup/Signup";
-import BandProfile from "./components/Band/Dashboard/BandDashboard-v2 copy"; //changed to v2 for testing
+import BandProfile from "./components/Band/Dashboard/BandDashboard-v2_current"; //changed to v2 for testing
 
 import ThanksForRegistering from "./components/Signup/ThanksForRegistering";
 import Logout from "./components/Logout/Logout";

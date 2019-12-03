@@ -57,7 +57,7 @@ const BandDashboard = () => {
       }
 
       //verify if the cookie matches
-      const areYouVerified = axios.post('http://ec2-54-242-133-39.compute-1.amazonaws.com:3001/verify', {
+      const areYouVerified = axios.post('http://localhost:3001/verify', {
          token: jwtCookie
       });
 
@@ -102,7 +102,7 @@ const BandDashboard = () => {
          return 
       }
 
-      const url = `http://ec2-54-242-133-39.compute-1.amazonaws.com:3001/band-settings/${id}`
+      const url = `http://localhost:3001/band-settings/${id}`
       
       axios.get( url )
       .then(response => {
@@ -143,7 +143,7 @@ const BandDashboard = () => {
    const handleSubmit = e => {
       e.preventDefault();
       console.log('USER: ',user)
-      const url  = `http://ec2-54-242-133-39.compute-1.amazonaws.com:3001/post/postID/${id}`;
+      const url  = `http://localhost:3001/post/postID/${id}`;
 
       axios.post( url, {
          postData: postData,
@@ -199,7 +199,6 @@ const BandDashboard = () => {
 
 
          </Container>
-         {/* <Footer /> */}
       </section>
          )
 }

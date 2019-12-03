@@ -85,7 +85,7 @@ const Settings = () => {
         }
   
         //verify if the cookie matches
-        axios.post(' http://ec2-54-242-133-39.compute-1.amazonaws.com:3001/verify', {
+        axios.post(' http://localhost:3001/verify', {
            token: jwtCookie
         })
         .then( user => {
@@ -105,7 +105,7 @@ const Settings = () => {
 
         e.preventDefault();
 
-        let url = ` http://ec2-54-242-133-39.compute-1.amazonaws.com:3001/submit-settings/${userID}`;
+        let url = ` http://localhost:3001/submit-settings/${userID}`;
         axios.post( url, {
             ZipCode:       zipcode,
             Name:          bandName,
@@ -140,7 +140,7 @@ const Settings = () => {
     const saveSettings = e => {
         e.preventDefault()
         
-        let url = ` http://ec2-54-242-133-39.compute-1.amazonaws.com:3001/save-settings/${userID}`;
+        let url = ` http://localhost:3001/save-settings/${userID}`;
         axios.put( url, {
             ZipCode: zipcode,
             Name: bandName,
@@ -182,7 +182,7 @@ const Settings = () => {
         return 
     }
         
-        const url = ` http://ec2-54-242-133-39.compute-1.amazonaws.com:3001/band-settings/${userID}`;
+        const url = ` http://localhost:3001/band-settings/${userID}`;
         
         axios.get( url )
             .then(response => {
