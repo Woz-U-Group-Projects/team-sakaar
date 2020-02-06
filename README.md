@@ -34,3 +34,4 @@ Stretch Goals-
 
 
 This project will be a full stack web application the utilizes multiple technologies, a database, and multiple frameworks.
+The idea is from Ben Contreras
