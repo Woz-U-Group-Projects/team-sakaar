@@ -1,0 +1,12 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  height: 100vh;
+}
+
+#Main {
+  min-height: calc(100vh - 64px - 100px - 235px);
+}

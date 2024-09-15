@@ -7,10 +7,15 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
+    VenuePicture: {
+      type: DataTypes.BLOB('long'),
+      name: DataTypes.STRING
+    },
     Name: DataTypes.STRING,
     Address: DataTypes.STRING,
     ContactPerson: DataTypes.STRING,
-    PhoneNumber: DataTypes.INTEGER
+    PhoneNumber: DataTypes.STRING,
+    FirstTimeLogin: { type: DataTypes.BOOLEAN, defaultValue: 0}
   }, {});
   venues.associate = function(models) {
     models.venues.hasMany(models.venueRatings,{

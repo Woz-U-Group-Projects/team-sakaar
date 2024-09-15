@@ -32,6 +32,16 @@
                 "Review": {
                     "field": "Review",
                     "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
                 }
             },
             "indexes": []
@@ -46,12 +56,20 @@
                     "field": "BandId",
                     "seqType": "Sequelize.INTEGER"
                 },
+                "BandPicture": {
+                    "field": "BandPicture",
+                    "seqType": "Sequelize.BLOB"
+                },
                 "Name": {
                     "field": "Name",
                     "seqType": "Sequelize.STRING"
                 },
                 "ContactPerson": {
                     "field": "ContactPerson",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ContactPersonPhoneNumber": {
+                    "field": "ContactPersonPhoneNumber",
                     "seqType": "Sequelize.STRING"
                 },
                 "Genre": {
@@ -61,6 +79,124 @@
                 "ZipCode": {
                     "field": "ZipCode",
                     "seqType": "Sequelize.INTEGER"
+                },
+<<<<<<< HEAD
+                "BandsId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "bands",
+                        "key": "BandId"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "BandsId",
+                    "seqType": "Sequelize.INTEGER"
+=======
+                "Bio": {
+                    "field": "Bio",
+                    "seqType": "Sequelize.STRING(1024)"
+                },
+                "Price": {
+                    "field": "Price",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "PersonalWebsite": {
+                    "allowNull": true,
+                    "field": "PersonalWebsite",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Facebook": {
+                    "allowNull": true,
+                    "field": "Facebook",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Instagram": {
+                    "allowNull": true,
+                    "field": "Instagram",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Twitter": {
+                    "allowNull": true,
+                    "field": "Twitter",
+                    "seqType": "Sequelize.STRING"
+                },
+                "FirstTimeLogin": {
+                    "defaultValue": {
+                        "value": 0
+                    },
+                    "field": "FirstTimeLogin",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "posts": {
+            "tableName": "posts",
+            "schema": {
+                "UserId": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "UserId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Comment": {
+                    "field": "Comment",
+                    "seqType": "Sequelize.STRING"
+                },
+                "UserName": {
+                    "field": "UserName",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Tasks": {
+            "tableName": "Tasks",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "name": {
+                    "field": "name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "complete": {
+                    "field": "complete",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+>>>>>>> dev
                 }
             },
             "indexes": []
@@ -88,9 +224,36 @@
                     "field": "Username",
                     "seqType": "Sequelize.STRING"
                 },
+                "Email": {
+                    "unique": true,
+                    "field": "Email",
+                    "seqType": "Sequelize.STRING"
+                },
                 "Password": {
                     "field": "Password",
                     "seqType": "Sequelize.STRING"
+                },
+                "AccountType": {
+                    "allowNull": false,
+                    "field": "AccountType",
+                    "seqType": "Sequelize.STRING"
+                },
+                "FirstTimeLogin": {
+                    "defaultValue": {
+                        "value": 1
+                    },
+                    "field": "FirstTimeLogin",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
                 }
             },
             "indexes": []
@@ -127,6 +290,66 @@
                 "Review": {
                     "field": "Review",
                     "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "venues": {
+            "tableName": "venues",
+            "schema": {
+                "VenueId": {
+                    "allowNull": false,
+                    "autoIncrement": true,
+                    "primaryKey": true,
+                    "field": "VenueId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "VenuePicture": {
+                    "field": "VenuePicture",
+                    "seqType": "Sequelize.BLOB(long)"
+                },
+                "Name": {
+                    "field": "Name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Address": {
+                    "field": "Address",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ContactPerson": {
+                    "field": "ContactPerson",
+                    "seqType": "Sequelize.STRING"
+                },
+                "PhoneNumber": {
+                    "field": "PhoneNumber",
+                    "seqType": "Sequelize.STRING"
+                },
+                "FirstTimeLogin": {
+                    "defaultValue": {
+                        "value": 0
+                    },
+                    "field": "FirstTimeLogin",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
                 }
             },
             "indexes": []
@@ -149,17 +372,44 @@
                     "field": "Address",
                     "seqType": "Sequelize.STRING"
                 },
+                "City": {
+                    "field": "City",
+                    "seqType": "Sequelize.STRING"
+                },
+                "State": {
+                    "field": "State",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ZipCode": {
+                    "field": "ZipCode",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "ContactPerson": {
                     "field": "ContactPerson",
                     "seqType": "Sequelize.STRING"
                 },
-                "PhoneNumber": {
-                    "field": "PhoneNumber",
+                "Email": {
+                    "field": "Email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "VenuesId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "venues",
+                        "key": "VenueId"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "VenuesId",
                     "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
         }
     },
+<<<<<<< HEAD
     "revision": 2
+=======
+    "revision": 12
+>>>>>>> dev
 }

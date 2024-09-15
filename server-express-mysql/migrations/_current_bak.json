@@ -46,6 +46,13 @@
                     "field": "BandId",
                     "seqType": "Sequelize.INTEGER"
                 },
+<<<<<<< HEAD
+=======
+                "BandPicture": {
+                    "field": "BandPicture",
+                    "seqType": "Sequelize.BLOB"
+                },
+>>>>>>> dev
                 "Name": {
                     "field": "Name",
                     "seqType": "Sequelize.STRING"
@@ -54,6 +61,13 @@
                     "field": "ContactPerson",
                     "seqType": "Sequelize.STRING"
                 },
+<<<<<<< HEAD
+=======
+                "ContactPersonPhoneNumber": {
+                    "field": "ContactPersonPhoneNumber",
+                    "seqType": "Sequelize.STRING"
+                },
+>>>>>>> dev
                 "Genre": {
                     "field": "Genre",
                     "seqType": "Sequelize.STRING"
@@ -61,6 +75,64 @@
                 "ZipCode": {
                     "field": "ZipCode",
                     "seqType": "Sequelize.INTEGER"
+<<<<<<< HEAD
+=======
+                },
+                "Bio": {
+                    "field": "Bio",
+                    "seqType": "Sequelize.STRING(1024)"
+                },
+                "Price": {
+                    "field": "Price",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "PersonalWebsite": {
+                    "allowNull": true,
+                    "field": "PersonalWebsite",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Facebook": {
+                    "allowNull": true,
+                    "field": "Facebook",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Instagram": {
+                    "allowNull": true,
+                    "field": "Instagram",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Twitter": {
+                    "allowNull": true,
+                    "field": "Twitter",
+                    "seqType": "Sequelize.STRING"
+                },
+                "FirstTimeLogin": {
+                    "defaultValue": {
+                        "value": 0
+                    },
+                    "field": "FirstTimeLogin",
+                    "seqType": "Sequelize.BOOLEAN"
+                }
+            },
+            "indexes": []
+        },
+        "Tasks": {
+            "tableName": "Tasks",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "name": {
+                    "field": "name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "complete": {
+                    "field": "complete",
+                    "seqType": "Sequelize.BOOLEAN"
+>>>>>>> dev
                 }
             },
             "indexes": []
@@ -88,13 +160,116 @@
                     "field": "Username",
                     "seqType": "Sequelize.STRING"
                 },
+<<<<<<< HEAD
                 "Password": {
                     "field": "Password",
                     "seqType": "Sequelize.STRING"
+=======
+                "Email": {
+                    "unique": true,
+                    "field": "Email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Password": {
+                    "field": "Password",
+                    "seqType": "Sequelize.STRING"
+                },
+                "AccountType": {
+                    "allowNull": false,
+                    "field": "AccountType",
+                    "seqType": "Sequelize.STRING"
+                },
+                "FirstTimeLogin": {
+                    "defaultValue": {
+                        "value": 1
+                    },
+                    "field": "FirstTimeLogin",
+                    "seqType": "Sequelize.BOOLEAN"
+                }
+            },
+            "indexes": []
+        },
+        "venueRatings": {
+            "tableName": "venueRatings",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "BandId": {
+                    "field": "BandId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "VenueId": {
+                    "field": "VenueId",
+                    "allowNull": true,
+                    "references": {
+                        "model": "venues",
+                        "key": "VenueId"
+                    },
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Rating": {
+                    "field": "Rating",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Review": {
+                    "field": "Review",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": []
+        },
+        "venues": {
+            "tableName": "venues",
+            "schema": {
+                "VenueId": {
+                    "allowNull": false,
+                    "autoIncrement": true,
+                    "primaryKey": true,
+                    "field": "VenueId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "VenuePicture": {
+                    "field": "VenuePicture",
+                    "seqType": "Sequelize.BLOB(long)"
+                },
+                "Name": {
+                    "field": "Name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Address": {
+                    "field": "Address",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ContactPerson": {
+                    "field": "ContactPerson",
+                    "seqType": "Sequelize.STRING"
+                },
+                "PhoneNumber": {
+                    "field": "PhoneNumber",
+                    "seqType": "Sequelize.STRING"
+                },
+                "FirstTimeLogin": {
+                    "defaultValue": {
+                        "value": 0
+                    },
+                    "field": "FirstTimeLogin",
+                    "seqType": "Sequelize.BOOLEAN"
+>>>>>>> dev
                 }
             },
             "indexes": []
         }
     },
+<<<<<<< HEAD
     "revision": 1
+=======
+    "revision": 11
+>>>>>>> dev
 }

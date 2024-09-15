@@ -1,0 +1,10 @@
+#venue-pic-container {
+  height: 500px;
+  width: 100%;
+  background-image: url("https://media.timeout.com/images/105329692/image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left 70%;
+}
+
+/* https://i0.wp.com/edmidentity.com/wp-content/uploads/2019/01/Tomorrowland-2018-4.jpg?fit=2048%2C1367&ssl=1 */
